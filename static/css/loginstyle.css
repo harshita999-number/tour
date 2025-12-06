@@ -1,0 +1,104 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Roboto', sans-serif;
+}
+.heading{
+    text-align: center;
+    padding: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.heading span {
+    color: orange;
+/*   color: rgb(65, 158, 65);*/
+}
+.login{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+ }
+.login img{
+    width: 350px;
+    height: 400px;
+    margin-top: 60px;
+ }
+.loginform{
+    width: 400px;
+    height: 500px;
+    background-color: #fff;
+    box-shadow: 0px 4px 4px 6px rgb(231, 229, 229);
+    margin-top: 10px;
+    margin-left: 80px;
+    padding: 22px;
+ }
+.loginform input{
+    width: 90%;
+    padding: 6px;
+    font-size: 16px;
+    margin-top: 3px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+ }
+.loginform p{
+    margin-top: 13px;
+ }
+.loginform p a{
+    color: orange;
+    /*color: rgb(36, 110, 36);*/
+    text-decoration: none;
+}
+#loginBtn{
+width: 80px;
+    height: 28px;
+    background-color: orange;
+    color: white;
+    font-size: 16px;
+    margin-top: 22px;
+    border: none;
+ }
+.alert{
+    margin-top: 40px;
+    margin-left: 48px;
+    padding: 1px;
+    background-color: teal;
+    color: white;
+    margin-bottom: 35px;
+    width: 75%;
+    max-width: 400px;
+    text-align: center;
+ }
+ .alert:hover{
+    background-color: rgb(17, 68, 68);
+ }
+ .alert p{
+     margin-bottom: 15px;
+     margin-left: 10px;
+ }
+ .closebtn{
+     margin-left: 350px;
+     margin-top: -40px;
+     color: white;
+     font-weight: bold;
+     float: right;
+     font-size: 20px;
+     line-height: 0px;
+     cursor: pointer;
+ }
+ @media only screen and (max-width:500px){
+    .heading{
+        margin: auto;
+    }
+    .loginform{
+        width: 80%;
+    }
+    .login img{
+        width: 90%;
+    }
+}
+
+
+ 

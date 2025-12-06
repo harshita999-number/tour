@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registeration Page</title>
+    <link rel="stylesheet" href="/static/css/registerstyle.css">
+    <script src="https://kit.fontawesome.com/f7521c047c.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <a href="/register"></a>
+        <div class="title">Registration</div>
+        <div class="content">
+            <form onsubmit="return validation()" action="/register" method="POST">
+                {% csrf_token %}
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Username</span>
+                        <input type="text" placeholder="Enter your Username" name="username" id="user_name" required>
+                        <span id="usererror"></span>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Email</span>
+                        <input type="email" placeholder="Enter your email" name="email" id="em" required>
+                        <span id="emailerror"></span>
+                    </div>
+                    <div class="input-box password-eye">
+                        <span class="details">Password</span>
+                        <input type="password" placeholder="Enter your password" name="pass1" id="pass1" required>
+                    <span class="toggle1">
+                        <i class="fa-regular fa-eye"></i>
+                    </span>
+                        <span id="passworderror"></span>
+                    </div>
+                    <div class="input-box password-eye">
+                        <span class="details">Confirm Password</span>
+                        <input type="password" placeholder="Enter your password again" name="pass2" id="pass2" required>
+                            <span class="toggle2">
+                              <i class="fa-regular fa-eye"></i>
+                            </span>
+                        <span id="confirmpassworderror"></span>
+                    </div>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Register" id="Rbtn">
+                </div>
+            </form>
+            {% if messages %}
+               {% for message in messages %}
+                   <script>
+                      let msg = "{{ message }}";
+                      if (msg === "Registration successful!"){
+                        validation();
+                      }
+                      else{
+                        alert(msg);
+                      }
+                   </script>
+                {% endfor %}
+            {% endif %}
+            <p>already have an account<a href="/login"> Log in here</a></p>
+        </div>
+    </div>
+    <script src="/static/script/registerapp.js"></script>
+</body>
+
+</html>
+

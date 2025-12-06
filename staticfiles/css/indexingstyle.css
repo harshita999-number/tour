@@ -1,0 +1,470 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+body{
+    font-family: 'Roboto', sans-serif;
+}
+nav{
+    display: flex;
+    justify-content: space-around;
+    background-color: orange;
+    color: white;
+    padding: 22px;
+    position: fixed;
+    top: 0%;
+    width: 100%;
+}
+ul{
+    display: flex;
+    align-items: center;
+}
+ul li{
+    list-style: none;
+}
+ul li a{
+    text-decoration: none;
+    margin-inline: 20px;
+    color: white;
+    font-size: 20px;
+}
+ul li a:hover{
+    color: black;
+    cursor: pointer;
+}
+.icons{
+    display: flex;
+    align-items: center;
+}
+.icons i{
+    font-size: 25px;
+    color: black;
+    cursor: pointer;
+    margin-inline: 20px;
+}
+.logo{
+    font-size: 20px;
+    color: black;
+}
+#bar{
+    display: none;
+}
+.main{
+    background-image: url('/static/uploading/me.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
+    animation: changeframe 20s Linear infinite;
+}
+@keyframes changeframe{
+    0%{
+        background-image: url('/static/uploading/me.jpg');
+    }
+    20%{
+        background-image: url('/static/uploading/me1.jpg');
+    }
+    40%{
+        background-image: url('/static/uploading/me2.jpg');
+    }
+    60%{
+        background-image: url('/static/uploading/me3.jpg');
+    }
+    80%{
+        background-image: url('/static/uploading/me4.jpg');
+    }
+    100%{
+        background-image: url('/static/uploading/me5.jpg');
+    }
+}
+.maintext{
+    position: relative;
+    text-align: center;
+    top: 41%;
+    color: white;
+    font-size: 20px;
+}
+#ex{
+    width: 140px;
+    height: 40px;
+    border: 2px solid orange;
+    background-color: transparent;
+    font-size: 21px;
+    cursor: pointer;
+    margin-top: 20px;
+    color: white;
+}
+#ex:hover{
+    background-color: orange;
+}
+.head{
+    text-align: center;
+    padding: 85px;
+}
+.head span{
+    color: orange;
+}
+.booking{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.booking img{
+width: 400px;
+border-radius: 5px;
+}
+.form{
+    margin-inline: 20px;
+    width: 320px;
+    background-color: white;
+    padding: 22px;
+    box-shadow: 0px 4px 4px 6px rgb(230, 229, 229);
+    border-radius: 4px;
+}
+.form input{
+    width: 90%;
+    padding: 8px;
+    font-size: 17px;
+    margin-top: 3px;
+    margin-bottom: 10px;
+}
+.form p{
+    margin-top: 20px;
+}
+#submit{
+    width: 80px;
+    height: 28px;
+    background-color: orange;
+    color: white;
+    font-size: 16px;
+    border: none;
+    margin-top: 20px;
+}
+.packages{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.packages .card{
+    width: 300px;
+    height: 360px;
+    margin-inline: 20px;
+    box-shadow: 0px 4px 4px 6px rgb(230, 229, 229);
+    margin-top: 11px;
+}
+.card img{
+    width: 300px;
+    height: 250px;
+    border-radius: 5px;
+}
+.card h3{
+    margin-left: 11px;
+    margin-top: 11px;
+}
+.card p{
+    margin-left: 11px;
+    margin-top: 11px;
+}
+.places{
+    display: grid;
+    justify-content: center;
+    width: 80%;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin: auto;
+}
+.places .placeCard{
+   box-shadow: 0px 4px 4px 6px rgb(226, 225, 225);
+   height: 360px;
+   border-radius: 5px;
+   margin-inline: 22px;
+   margin-top: 22px;
+}
+.placeCard img{
+    width: 300px;
+    height: 250px;
+    border-radius: 5px;
+}
+.placeCard h3{
+   margin-top: 11px;
+   margin-left: 11px;
+}
+.placeCard p{
+    margin-top: 11px;
+    margin-left: 11px;
+ }
+.wrap{
+    display: flex;
+}
+.wrap ul{
+    flex: 1;
+    display: block;
+    margin-top: 20px;
+    box-shadow: 0px 4px 4px 6px rgb(226, 225, 225);
+    height: 550px;
+    width: 300px;
+    border-radius: 5px;
+    margin-inline: 2px;
+    margin-left: 35px;
+}
+.wrap ul li{
+    font-size: 30px;
+    text-align: justify;
+}
+.wrap ul li a{
+    color: orange;
+}
+.wrap ul li a:hover{
+        color: black;
+        cursor: pointer;
+}
+.slider-container{
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+ }
+.slider img{
+    width: 900px;
+    height: 550px;
+    border-radius: 5px;
+    margin-left: 90px;
+    margin-top: 20px;
+}
+.slider{
+    display: flex;
+    transition: transform 0.5s ease;
+}
+.slide{
+    display: none;
+}
+.slide.active{
+    display: block;
+}
+.slide-container button{
+    background-color: black;
+    color: #fff;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+}
+button .prev,button .next{
+    position: absolute;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5);
+}
+.prev{
+    margin-left: 550px;
+}
+.book-room{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.book-room img{
+width: 450px;
+border-radius: 5px;
+}
+.roomform{
+    margin-inline: 20px;
+    width: 350px;
+    background-color: white;
+    padding: 22px;
+    margin-left: 3px;
+    box-shadow: 0px 4px 4px 6px rgb(230, 229, 229);
+    border-radius: 4px;
+}
+.roomform input{
+    width: 90%;
+    padding: 8px;
+    font-size: 17px;
+    margin-top: 3px;
+    margin-bottom: 10px;
+}
+.roomform p{
+    margin-top: 20px;
+}
+#confirm{
+    width: 80px;
+    height: 28px;
+    background-color: orange;
+    color: white;
+    font-size: 16px;
+    border: none;
+    margin-top: 20px;
+}
+.nearest{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+ }
+.nearest .nearCard{
+    width: 300px;
+    height: 360px;
+    margin-inline: 20px;
+    box-shadow: 0px 4px 4px 6px rgb(230, 229, 229);
+    margin-top: 11px;
+ }
+ .nearCard img{
+    width: 300px;
+    height: 250px;
+    border-radius: 5px;
+}
+.nearCard h3{
+    margin-top: 11px;
+    margin-left: 11px;
+ }
+ .nearCard p{
+     margin-top: 11px;
+     margin-left: 11px;
+  }
+ .contact{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+ }
+ .contact img{
+    width: 600px;
+    height: 500px;
+ }
+ .contactForm{
+    width: 300px;
+    height: 450px;
+    background-color: #fff;
+    box-shadow: 0px 4px 4px 6px rgb(231, 229, 229);
+    margin-top: 2px;
+    margin-left: 4px;
+    padding: 22px;
+ }
+ .contactForm input{
+    width: 90%;
+    padding: 6px;
+    font-size: 16px;
+    margin-top: 3px;
+    margin-bottom: 10px;
+ }
+ .contactForm p{
+    margin-top: 13px;
+ }
+#Cbtn{
+width: 80px;
+    height: 28px;
+    background-color: orange;
+    color: white;
+    font-size: 16px;
+    margin-top: 22px;
+    border: none;
+ }
+ footer{
+    background-color: black;
+ }
+ .footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    color: white;
+    padding: 66px;
+    margin-top: 55px;
+ }
+ .text p{
+    margin-top: 11px;
+ }
+ .bottom_bar{
+    background-color: orange;
+    padding: 20px;
+    text-align: center;
+    margin-top: 50px;
+}
+.bottom_bar p{
+    color: black;
+    margin: 10;
+    font-size: 16px;
+    padding: 7px;
+}
+.bottom_bar a{
+    text-decoration: none;
+}
+#msg{
+    color: green;
+}
+.mycont{
+    text-align: center;
+}
+.mycont h1{
+    color: orange;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.mycont h2{
+    margin-top: 21px;
+    margin-left: 11px;
+}
+.myCont h3{
+    margin-top: 21px;
+    margin-left: 11px;
+    color: green;
+}
+.myCont img{
+    width: 500px;
+    height: 250px;
+    border-radius: 5px;
+}
+.myimg{
+    width: 100%;
+}
+
+@media only screen and (max-width:900px){
+    .options ul{
+        display: none;
+    }
+        #bar{
+            display: block;
+        }
+ }
+ @media only screen and (max-width:800px){
+ .maintext h1{
+    font-size: 38px;
+    }
+    .booking img{
+        width: 90%;
+    }    
+    .contact img{
+        width: 90%;
+    }
+    .packages img{
+        width: 90%;
+    }
+    .places img{
+        width: 90%;
+    }
+    .nearest img{
+        width: 90%;
+    }
+    .wrap img{
+        width: 90%;
+        margin-left: 10px;
+    }
+    .wrap ul{
+        margin-left: 10px;
+    }
+ }
+ @media only screen and (max-width:500px){
+    .maintext h1{
+       font-size: 30px;
+    }
+    .contactForm{
+        width: 60%;
+    }
+    .text{
+        text-align: center;
+        margin-top: 22px;
+    }
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,11 @@
+<h2>Your Booking History</h2>
+
+{% for b in bookings %}
+<p>
+Name: {{b.your_name}} <br>
+Status: {{b.payment_status}} <br>
+
+<a href="/cancel/{{b.id}}">Cancel Booking</a>
+</p>
+<hr>
+{% endfor %}

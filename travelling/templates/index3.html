@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Ujjain Tour And Travelling</title>
+    <!--<link rel="stylesheet" href="/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />-->
+    <!--<script src="https://kit.fontawesome.com/f7521c047c.js" crossorigin="anonymous"></script>-->
+    <script src="https://kit.fontawesome.com/f7521c047c.js" crossorigin="anonymous"></script>
+    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha200-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="/static/css/indexingstyle.css">
+</head>
+
+<body>
+    <div class="container">
+        <a href="/index3"></a>
+        <nav>
+            <div class="logo">
+                <h1>CoolTrips</h1>
+            </div>
+            <div class="options">
+                <ul>
+                    <li><a href="/index3">Home</a></li>
+                    <li><a href="#book">Book</a></li>
+                    <li><a href="#package">Packages</a></li>
+                    <li><a href="#place">Best Places</a></li>
+                    <li><a href="#hotel">Best Hotels</a></li>
+                    <li><a href="#nearest">Near Places</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#text">About</a></li>
+                </ul>
+            </div>
+            <div class="icons">
+                <i id="bar" class="fa-solid fa-bars"></i>
+                <a href="/logout">
+                    <i id="user" class="fa-solid fa-sign-out"></i>
+                </a>
+            </div>
+        </nav>
+        <div class="main">
+            <div class="maintext">
+                <h1>Ujjain: Best Destination <br> for holiday</h1>
+                <a href='/next'>
+                    <button id="ex">Explore</button>
+                </a>
+            </div>
+        </div>
+        <div class="book" id="book">
+            <div class="head">
+                <h1>Book <span>Your Taxi</span></h1>
+            </div>
+            <div class="booking">
+                <img src="/static/uploading/book.jpg" alt="">
+                <div class="form">
+                    <form id="placeForm" action="/booking" method='POST'>
+                        {% csrf_token %}
+                        <h2>Book Your Taxi Now</h2>
+                        <label for="destination">Where You Gone</label>
+                        <input list="places" placeholder="where you gone" name="place" id="placeName" required />
+                        <datalist id="places">
+                            <option value="Banglamukhi Temple"></option>
+                            <option value="Chintaman Ganesh Temple"></option>
+                            <option value="Chaubis Khamba Temple"></option>
+                            <option value="Gadkalika Temple"></option>
+                            <option value="Gopal Madir"></option>
+                            <option value="Harsiddhi Temple"></option>
+                            <option value="Hanuwantiya"></option>
+                            <option value="ISKCON Temple"></option>
+                            <option value="Jogi Bhadak Waterfall"></option>
+                            <option value="Kal Bhairav Temple"></option>
+                            <option value="Kaliadeh Palace"></option>
+                            <option value="Kshipra River"></option>
+                            <option value="Mahakaleshwar Temple"></option>
+                            <option value="Mangalnath Temple"></option>
+                            <option value="Maheshwar"></option>
+                            <option value="Mandu"></option>
+                            <option value="Nagarkot ki Rani"></option>
+                            <option value="Navagraha Temple (Triveni)"></option>
+                            <option value="Omkareshwar Temple"></option>
+                            <option value="Pachmarhi"></option>
+                            <option value="Ramghat"></option>
+                            <option value="Rama-janardana Temple"></option>
+                            <option value="Sandipani Aashram Temple"></option>
+                            <option value="Siddhavat"></option>
+                            <option value="Sailani Tapu"></option>
+                            <option value="Tomb of Rumi"></option>
+                            <option value="Ved Shala(Jantar Mantar)"></option>
+                        </datalist>
+                        <label for="number">Members</label>
+                        <input type="number" name="member_count" id="member" value="2" required />
+                        <label for="date">At Which Date</label>
+                        <input type="date" name="event_date" id="date" required />
+                        <input type="submit" value="Submit" id="submit">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="pack" id="package">
+            <div class="head">
+                <h1>Best <span>Packages</span></h1>
+            </div>
+            <div class="packages">
+                <div class="card">
+                    <img src="/static/uploading/plan1.jpg" alt="">
+                    <h3>Ujjain Temples</h3>
+                    <p>1 Day Tour</p>
+                    <p>1000 Only</p>
+                </div>
+                <div class="card">
+                    <img src="/static/uploading/plan2.jpeg" alt="">
+                    <h3>Historical Places</h3>
+                    <p>3 Days Tour</p>
+                    <p>1,000 Only</p>
+                </div>
+                <div class="card">
+                    <img src="/static/uploading/plan3.jpg" alt="">
+                    <h3>Gardens And Parks</h3>
+                    <p>5 Days Tour</p>
+                    <p>1,000 Only</p>
+                </div>
+            </div>
+        </div>
+        <div class="best" id="place">
+            <div class="head">
+                <h1>Explore <span>Best Places</span></h1>
+            </div>
+            <div class="places">
+                <div class="placeCard">
+                    <img src="/static/uploading/p1.jpg" alt="">
+                    <h3>Mahakaleshwar Temple</h3>
+                    <p>2Km Away from railway station</p>
+                </div>
+                <div class="placeCard">
+                    <img src="/static/uploading/p2.jpg" alt="">
+                    <h3>Mangalnath Temple</h3>
+                    <p>6Km Away from railway station</p>
+                </div>
+                <div class="placeCard">
+                    <img src="/static/uploading/p3.jpg" alt="">
+                    <h3>Kal Bhairav Temple</h3>
+                    <p>7Km Away from railway station</p>
+                </div>
+                <div class="placeCard">
+                    <img src="/static/uploading/p4.jpg" alt="">
+                    <h3>Harsiddhi Temple</h3>
+                    <p>2.5Km Away from railway station</p>
+                </div>
+                <div class="placeCard">
+                    <img src="/static/uploading/p5.jpg" alt="">
+                    <h3>Shree Chintaman Ganesh Temple</h3>
+                    <p>7Km Away from railway station</p>
+                </div>
+                <div class="placeCard">
+                    <img src="/static/uploading/p6.jpg" alt="">
+                    <h3>Sandipani Ashram Temple</h3>
+                    <p>6Km Away from railway station</p>
+                </div>
+            </div>
+        </div>
+        <div class="hotels" id="hotel">
+            <div class="head">
+                <h1>Ujjain <span>Best Hotels</span></h1>
+            </div>
+            <div class="wrap">
+                <div class="hotel">
+                    <ul>
+                        <li>
+                            <h2><a href="https://www.rudrakshresorts.com">Rudraksh Hotel <i
+                                        class="fa-regular fa-star"></i>4.3/5</a></h2>
+                        </li>
+                        <li>
+                            <h2><a href="https://meghdootresort.in/">Meghdoot Hotel <i
+                                        class="fa-regular fa-star"></i>3.4/5</a></h2>
+                        </li>
+                        <li>
+                            <h2><a href="https://shreeganga.in/">shreeganga Hotel <i
+                                        class="fa-regular fa-star"></i>4.1/5</a></h2>
+                        </li>
+                        <li>
+                            <h2><a href="http://abikahotels.com/">Abika Hotel <i
+                                        class="fa-regular fa-star"></i>4.1/5</a>
+                            </h2>
+                        </li>
+                        <li>
+                            <h2><a href="https://mittalresorts.in/">Mittal Hotel <i
+                                        class="fa-regular fa-star"></i>3.4/5</a>
+                            </h2>
+                        </li>
+                        <li>
+                            <h2><a href="https://hotelnakshatraujjain.com/">Nakshatra Hotel <i
+                                        class="fa-regular fa-star"></i>4.0/5</a></h2>
+                        </li>
+                        <li>
+                            <h2><a href="https://thehotelatharva.com/">Atharva Hotel <i
+                                        class="fa-regular fa-star"></i>4.1/5</a></h2>
+                        </li>
+                    </ul>
+                </div>
+                <div class="slide-container">
+                    <div class="slider">
+                        <img src="/static/uploading/hotel.jpeg" class="slide" alt="">
+                        <img src="/static/uploading/hotel1.jpg" class="slide" alt="">
+                        <img src="/static/uploading/hotel2.jpg" class="slide" alt="">
+                        <img src="/static/uploading/hotel3.jpg" class="slide" alt="">
+                        <img src="/static/uploading/hotel4.jpg" class="slide" alt="">
+                        <img src="/static/uploading/hotel5.jpg" class="slide" alt="">
+                    </div>
+                    <button class="prev" onclick="changeSlide(-1)"></button>
+                    <button class="next" onclick="changeSlide(1)"></button>
+                </div>
+            </div>
+            <div class="booking-form">
+                <div class="head">
+                    <h1>Book <span>Your Stay</span></h1>
+                </div>
+                <div class="book-room">
+                    <img src="/static/uploading/hotelroom.jpg" alt="">
+                    <div class="roomform">
+                        <form action="/room_book" method='POST'>
+                            {% csrf_token %}
+                            <h2>Book Your Room Now</h2>
+                            <label for="name">Name:</label>
+                            <input type="text" placeholder="Enter Your Name" name="your_name" id="your_name" required>
+                            <label for="email">Email:</label>
+                            <input type="email" placeholder="Enter Your Email" name="your_email" id="your_email"
+                                required>
+                            <label for="checkin">Check-in Date:</label>
+                            <input type="date" name="checkin" id="checkin" required>
+                            <label for="checkout">Check-out Date:</label>
+                            <input type="date" name="checkout" id="checkout" required>
+                            <label for="guests">Number of Guests:</label>
+                            <input type="number" name="guests" id="guests" min="1" required>
+                            <input type="submit" value="Confirm" id="confirm">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="near" id="nearest">
+            <div class="head">
+                <h1>Places To <span>Visit Near Ujjain</span></h1>
+            </div>
+            <div class="nearest">
+                <div class="nearCard">
+                    <img src="/static/uploading/v1.jpg" alt="">
+                    <h3>Banglamukhi Temple</h3>
+                    <p>105Km Away From Ujjain</p>
+                </div>
+                <div class="nearCard">
+                    <img src="/static/uploading/v8.jpg" alt="">
+                    <h3>Jogi Bhadak Waterfall</h3>
+                    <p>138Km Away From Ujjain</p>
+                </div>
+                <div class="nearCard">
+                    <img src="/static/uploading/v2.jpeg" alt="">
+                    <h3>Omkareshwar Temple</h3>
+                    <p>140-160Km Away From Ujjain</p>
+                </div>
+                <div class="nearCard">
+                    <img src="/static/uploading/v3.jpg" alt="">
+                    <h3>Sailani Tapu</h3>
+                    <p>146.5Km Away From Ujjain</p>
+                </div>
+                <div class="nearCard">
+                    <img src="/static/uploading/v4.jpg" alt="">
+                    <h3>Mandu</h3>
+                    <p>155Km Away From Ujjain</p>
+                </div>
+                <div class="nearCard">
+                    <img src="/static/uploading/v5.jpg" alt="">
+                    <h3>Hanuwantiya</h3>
+                    <p>204.5Km Away From Ujjain</p>
+                </div>
+                <div class="nearCard">
+                    <img src="/static/uploading/v6.jpg" alt="">
+                    <h3>Pachmarhi</h3>
+                    <p>283Km Away From Ujjain</p>
+                </div>
+                <div class="nearCard">
+                    <img src="/static/uploading/v7.jpg" alt="">
+                    <h3>Maheshwar</h3>
+                    <p>152Km Away From Ujjain</p>
+                </div>
+            </div>
+        </div>
+        <div class="connect" id="contact">
+            <div class="head">
+                <h1>Contact <span>Us</span></h1>
+            </div>
+            <div class="contact">
+                <img src="/static/uploading/contact.jpg" alt="">
+                <div class="contactForm">
+                    <form action="/connect" method="POST">
+                        {% csrf_token %}
+                        <label for="name">Name</label>
+                        <input type="text" placeholder="Enter Name" name="username" id="N">
+                        <label for="email">Email</label>
+                        <input type="email" placeholder="Enter Email" name="mail" id="E">
+                        <input type="submit" value="Connect" id="Cbtn">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="footer" id="text">
+                <div class="text">
+                    <h3>About Us</h3>
+                    <p>The success of any tour & travels related organization <br>
+                        depends on customer satisfaction.
+                    </p>
+                    <p>CoolTrips motto has been ‘best service’. Our Vision is<br>
+                        to be a Trend Setter in the Travel & Tourism Industry,<br>
+                        Scale new heights of Excellence in Service, Expand the<br>
+                        Satisfied Smiles of our Clients and Customers with<br>
+                        Promptness and Quality.
+                    </p>
+                </div>
+                <div class="text">
+                    <h3>Tour</h3>
+                    <p>Quality</p>
+                    <p>Price</p>
+                    <p>Affordable</p>
+                    <p>Exchange</p>
+                </div>
+                <div class="text">
+                    <h3>Travel</h3>
+                    <p>Offer</p>
+                    <p>Good</p>
+                    <p>Quality</p>
+                    <p>Price</p>
+                </div>
+                <div class="text">
+                    <h3>Adress</h3>
+                    <p>999-333-5459</p>
+                    <p>Galaxy Hall</p>
+                    <p>Ring Road</p>
+                    <p>1222244466</p>
+                </div>
+            </div>
+            <div class="bottom_bar">
+                <p>Copyright &copy; 2024; <a href="index2.html">CoolTrips</a>. All rights reserved</p>
+            </div>
+        </footer>
+    </div>
+    <script src="/static/script/app.js"></script>
+</body>
+
+</html>

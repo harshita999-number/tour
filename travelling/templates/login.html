@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/static/css/loginstyle.css">
+</head>
+
+<body>
+    <div class="container">
+        <a href="/login"></a>
+        <div class="heading">
+            <h1>Log<span> In Here</span></h1>
+        </div>
+        <div class="login">
+            <img src="/static/uploading/loginorange.jpg" alt="">
+            <div class="loginform">
+                <form method="POST" action="/login">
+                    {% csrf_token %}
+                    <p>Username</p>
+                    <input type="text" placeholder="Enter Username" name="username" id="username" required /><br>
+                    <p>Password</p>
+                    <input type="password" placeholder="Enter Password" name="password" id="password" required /><br>
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert">
+                        <p>{{message}}</p>
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    <input type="submit" value="Login" id="loginBtn">
+                    <p>Don't have account<a href="/register"> Register here</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
