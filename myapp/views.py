@@ -145,7 +145,8 @@ def taxi_cancel(request, id):
 
 
 def payment_page(request):
-    return render(request,"payment.html")
+    from django.conf import settings 
+    return render(request,"payment.html",{"paypal_client_id":settings.PAYPAL_CLIENT_ID})
 
 def room_book(request):
     if request.method == "POST":

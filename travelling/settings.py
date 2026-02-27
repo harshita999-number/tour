@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-lc@##6-36f=k-3=)-%2fe96&o9m_(xx%dd4%(=l5ea&tpv#f*&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','travelling.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -132,6 +132,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-PAYPAL_CLIENT_ID = os.environ.get("AenweoVA-olyUxsLKpk4jAPsQrx1qFLgnCsK-VDn_Z1pOy_tADJ06psa0UHf8oaPpk-nIGE0f_WLQApB")
-PAYPAL_CLIENT_SECRET = os.environ.get("EGt8Z26uzSjuXdVhA6KRe5q_iODxYRzbkmJuzoe9Ewdmtk3imdLDtKJ5rV9o4KoX_GKPf6qGUliKFZxt")
+PAYPAL_CLIENT_ID = os.environ.get("PAYPAL_CLIENT_ID")
+PAYPAL_CLIENT_SECRET = os.environ.get("PAYPAL_CLIENT_SECRET")
 
