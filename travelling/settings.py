@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "True")=="True"
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS","127.0.0.1,localhost,tour-38nh.onrender.com").split(",")
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS","127.0.0.1,localhost","tour-38nh.onrender.com").split(",")
 
 PAYPAL_MODE = os.environ.get("PAYPAL_MODE", "sandbox")
 # Application definition
