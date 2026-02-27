@@ -30,7 +30,7 @@ DEBUG = os.environ.get("DEBUG")=="True"
 
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS","127.0.0.1,LOCALHOST").SPLIT(",")
 
-
+PAYPAL_MODE = os.environ.get("PAYPAL_MODE", "sandbox")
 # Application definition
 
 INSTALLED_APPS = [
