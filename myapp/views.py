@@ -19,7 +19,9 @@ def index3(request):
     return render(request, 'index3.html')
 
 def taxi_payment_page(request):
-    return render(request,"taxi_payment.html")
+    from django.conf import settings 
+    return render(request,"taxi_payment.html",{"paypal_client_id":settings.PAYPAL_CLIENT_ID})
+
 
 def booking(request):
     if request.method == "POST":
