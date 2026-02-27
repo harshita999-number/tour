@@ -19,8 +19,8 @@ def index3(request):
     return render(request, 'index3.html')
 
 def taxi_payment_page(request):
-    from django.conf import settings 
-    return render(request,"taxi_payment.html",{"paypal_client_id":settings.PAYPAL_CLIENT_ID})
+   # from django.conf import settings 
+    return render(request,"taxi_payment.html")#,{"paypal_client_id":settings.PAYPAL_CLIENT_ID})
 
 
 def booking(request):
@@ -147,8 +147,8 @@ def taxi_cancel(request, id):
 
 
 def payment_page(request):
-    from django.conf import settings 
-    return render(request,"payment.html",{"paypal_client_id":settings.PAYPAL_CLIENT_ID})
+    #from django.conf import settings 
+    return render(request,"payment.html")#,{"paypal_client_id":settings.PAYPAL_CLIENT_ID})
 
 def room_book(request):
     if request.method == "POST":
@@ -346,18 +346,18 @@ from django.http import HttpResponse
 
 @csrf_exempt
 def paypal_webhook(request):
-    try:
-    #data = json.loads(request.body)
-        payload = json.loads(request.body)
-        print("===Webhook Event Received===")
-        print("event_type:",
-             payload.get("event_type"))
-        print("full payload:", payload)
-    except json.JSONDecodeError:
-        print("invalid json received")
-    return HttpResponse(status=200)
+    #try:
+    data = json.loads(request.body)
+        #payload = json.loads(request.body)
+        #print("===Webhook Event Received===")
+        #print("event_type:",
+             #payload.get("event_type"))
+        #print("full payload:", payload)
+    #except json.JSONDecodeError:
+        #print("invalid json received")
+   # return HttpResponse(status=200)
     
-""" event_type = data.get("event_type")
+    event_type = data.get("event_type")
 
     capture_id = data.get("resource", {}).get("id")
 
@@ -390,7 +390,7 @@ def paypal_webhook(request):
         booking.payment_status = "Refunded"
         booking.save()
 
-    return JsonResponse({"status": "ok"})"""
+    return JsonResponse({"status": "ok"})
 
 
 
