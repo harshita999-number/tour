@@ -56,6 +56,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'travelling.urls'
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
