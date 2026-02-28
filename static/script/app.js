@@ -1,10 +1,10 @@
-let placeName = document.getElementById("placeName");
+//let placeName = document.getElementById("placeName");
 let submit = document.getElementById("submit");
 let confirm = document.getElementById("confirm");
 let Cbtn = document.getElementById("Cbtn");
 let Rbtn = document.getElementById("Rbtn");
 let placeForm = document.getElementById("placeForm");
-let memBer  = document.getElementById("member");
+//let member  = document.getElementById("member");
 
 
 let currentSlide=0;
@@ -25,39 +25,51 @@ setInterval(()=>{
  
 
 submit.addEventListener("click",function(event){
+    //event.preventDefault();
     let dateInput = document.getElementById("date").value;
+    let member  = parseInt(document.getElementById("member").value);
+    let placeName = document.getElementById("placeName").value;
     let currentDate = new Date();
     let selectedDate = new Date(dateInput);
     let datalist = document.getElementById("places");
     options = Array.from(datalist.options).map(opt => opt.value.toLowerCase());
-    let enteredValue = placeName.value.trim().toLowerCase();
-    today,setHours(0,0,0,0);
+    let enteredValue = placeName.trim().toLowerCase();
+    //currentDate.setHours(0,0,0,0);
 
   
     if(!options.includes(enteredValue)){
+        //event.preventDefault();
         alert("Please select a name from the options provided.")
         event.preventDefault();
     }
-    else if(placeName.value == "" || date.value == ""){
+    else if(placeName == "" || selectedDate == ""){
+        //event.preventDefault();
         alert("Please Fill Form!")
         event.preventDefault();
     }
     else if(selectedDate < currentDate){
+        //event.preventDefault();
         alert("Please Select A Future Date")
         event.preventDefault();
     }
-    else if(memBer.value <= 0 ){
+    else if(isNaN(member) || member <= 0 ){
+        //event.preventDefault();
         alert("please enter a valid member number")
         event.preventDefault();
     }
     else{
-        alert("Taxi for " + placeName.value + " is proceeding make payment for booking")
+        alert("Taxi for " + placeName/*.value*/ + " is proceeding make payment for booking")
+        //event.preventDefault();
+        //window.location.href = "/taxi_payment_page/";
+        window.location.href = paymentUrl;
     }
 })
 
 confirm.addEventListener("click",function(event){
+    //event.preventDefault();
     let your_name = document.getElementById("your_name").value;
     let your_email = document.getElementById("your_email").value;
+    let guests = parseInt(document.getElementById("guests").value);
     let dateInput1 = document.getElementById("checkin").value;
     let dateInput2 = document.getElementById("checkout").value;
     let currentDate = new Date();
@@ -65,10 +77,11 @@ confirm.addEventListener("click",function(event){
     let selectedDate2 = new Date(dateInput2);
     let usernamecheck = /^[A-Za-z. ]{5,30}$/;
     let emailnamecheck = /^[A-Za-z_]{3,}[0-9]{2,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,6}$/;
+    //currentDate.setHours(0,0,0,0);
 
-    if(your_name == "" || your_email == "" || dateInput1 == "" || dateInput2 == ""){
-            alert("Please Fill Form!")
-            event.preventDefault();
+    if(your_name == "" || your_email == "" || selectedDate1 == "" || selectedDate2 == ""){
+        alert("Please Fill Form!")
+        event.preventDefault();
         }
     else if(selectedDate1 < currentDate){
         alert("Please Select A Future Date")
@@ -78,12 +91,20 @@ confirm.addEventListener("click",function(event){
         alert("Please Select A Future Date")
         event.preventDefault();
     }
+    else if(selectedDate2 < selectedDate1){
+        alert("check-out cannot be before")
+        event.preventDefault();
+    }
     else if(!usernamecheck.test(your_name)){
         alert("Please Fill Correct Name")
         event.preventDefault();
     }
     else if(!emailnamecheck.test(your_email)){
         alert("Please Fill Correct Email")
+        event.preventDefault();
+    }
+    else if(isNaN(guests) || guests <= 0 ){
+        alert("please enter a valid guests number")
         event.preventDefault();
     }
     else if(document.querySelector('script[alert-error]')){

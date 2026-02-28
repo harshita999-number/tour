@@ -90,11 +90,10 @@
                                 <option value="Ved Shala(Jantar Mantar)"></option>
                         </datalist>
                         <label for="number">Members</label>
-                        <input type="number" name="member_count" id="member" value="2" required/>
+                        <input type="number" name="member_count" id="member" value="2"  required/>
                         <label for="date">At Which Date</label>
                         <input type="date" name="event_date" id="date" required/>
                         <input type="submit" value="Submit" id="submit">
-                        <p>click here for payment <a href="/taxi_payment_page">pay now</a></p>
                     </form>
                 </div>
             </div>
@@ -105,19 +104,22 @@
             </div>
             <div class="packages">
                 <div class="card">
-                    <img src="/static/uploading/plan1.jpg" alt="">
+                    <!--<img src="/static/uploading/plan1.jpg" alt="">-->
+                    <img src="{% static 'uploading/plan1.jpg' %}" alt="">
                     <h3>Ujjain Temples</h3>
                     <p>1 Day Tour</p>
                     <p>1000 Only</p>
                 </div>
                 <div class="card">
-                    <img src="/static/uploading/plan2.jpeg" alt="">
+                    <!--<img src="/static/uploading/plan2.jpeg" alt="">-->
+                    <img src="{% static 'uploading/plan2.jpeg' %}" alt="">
                     <h3>Historical Places</h3>
                     <p>3 Days Tour</p>
                     <p>1,000 Only</p>
                 </div>
                 <div class="card">
-                    <img src="/static/uploading/plan3.jpg" alt="">
+                    <!--<img src="/static/uploading/plan3.jpg" alt="">-->
+                    <img src="{% static 'uploading/plan3.jpg' %}" alt="">
                     <h3>Gardens And Parks</h3>
                     <p>5 Days Tour</p>
                     <p>1,000 Only</p>
@@ -130,32 +132,38 @@
             </div>
             <div class="places">
                 <div class="placeCard">
-                    <img src="/static/uploading/p1.jpg" alt="">
+                    <!--<img src="/static/uploading/p1.jpg" alt="">-->
+                    <img src="{% static 'uploading/p1.jpg' %}" alt="">
                     <h3>Mahakaleshwar Temple</h3>
                     <p>2Km Away from railway station</p>
                 </div>
                 <div class="placeCard">
-                    <img src="/static/uploading/p2.jpg" alt="">
+                    <!--<img src="/static/uploading/p2.jpg" alt="">-->
+                    <img src="{% static 'uploading/p2.jpg' %}" alt="">
                     <h3>Mangalnath Temple</h3>
                     <p>6Km Away from railway station</p>
                 </div>
                 <div class="placeCard">
-                    <img src="/static/uploading/p3.jpg" alt="">
+                    <!--<img src="/static/uploading/p3.jpg" alt="">-->
+                    <img src="{% static 'uploading/p3.jpg' %}" alt="">
                     <h3>Kal Bhairav Temple</h3>
                     <p>7Km Away from railway station</p>
                 </div>
                 <div class="placeCard">
-                    <img src="/static/uploading/p4.jpg" alt="">
+                    <!--<img src="/static/uploading/p4.jpg" alt="">-->
+                    <img src="{% static 'uploading/p4.jpg' %}" alt="">
                     <h3>Harsiddhi Temple</h3>
                     <p>2.5Km Away from railway station</p>
                 </div>
                 <div class="placeCard">
-                    <img src="/static/uploading/p5.jpg" alt="">
+                    <!--<img src="/static/uploading/p5.jpg" alt="">-->
+                    <img src="{% static 'uploading/p5.jpg' %}" alt="">
                     <h3>Shree Chintaman Ganesh Temple</h3>
                     <p>7Km Away from railway station</p>
                 </div>
                 <div class="placeCard">
-                    <img src="/static/uploading/p6.jpg" alt="">
+                    <!--<img src="/static/uploading/p6.jpg" alt="">-->
+                    <img src="{% static 'uploading/p6.jpg' %}" alt="">
                     <h3>Sandipani Ashram Temple</h3>
                     <p>6Km Away from railway station</p>
                 </div>
@@ -195,12 +203,18 @@
             </div>
             <div class="slide-container">        
             <div class="slider">    
-                <img src="/static/uploading/hotel.jpeg" class="slide" alt="">
+                <!--<img src="/static/uploading/hotel.jpeg" class="slide" alt="">
                 <img src="/static/uploading/hotel1.jpg" class="slide" alt="">
                 <img src="/static/uploading/hotel2.jpg" class="slide" alt="">
                 <img src="/static/uploading/hotel3.jpg" class="slide" alt="">
                 <img src="/static/uploading/hotel4.jpg" class="slide" alt="">
-                <img src="/static/uploading/hotel5.jpg" class="slide" alt="">
+                <img src="/static/uploading/hotel5.jpg" class="slide" alt="">-->
+                <img src="{% static 'uploading/hotel.jpeg' %}" class="slide" alt="">
+                <img src="{% static 'uploading/hotel1.jpg' %}" class="slide" alt="">
+                <img src="{% static 'uploading/hotel2.jpg' %}" class="slide" alt="">
+                <img src="{% static 'uploading/hotel3.jpg' %}" class="slide" alt="">
+                <img src="{% static 'uploading/hotel4.jpg' %}" class="slide" alt="">
+                <img src="{% static 'uploading/hotel5.jpg' %}" class="slide" alt="">
             </div>
             <button class="prev" onclick="changeSlide(-1)"></button>
             <button class="next" onclick="changeSlide(1)"></button>
@@ -211,7 +225,8 @@
             <h1>Book <span>Your Stay</span></h1>
         </div>
         <div class="book-room">
-            <img src="/static/uploading/hotelroom.jpg" alt="">
+            <!--<img src="/static/uploading/hotelroom.jpg" alt="">-->
+            <img src="{% static 'uploading/hotelroom.jpg' %}" alt="">
             <div class="roomform">
                 <form action="/room_book" method='POST'>
                     {% csrf_token %}
@@ -230,7 +245,7 @@
                     <label for="checkout">Check-out Date:</label>
                     <input type="date" name="checkout" id="checkout" required>
                     <label for="guests">Number of Guests:</label>
-                    <input type="number" name="guests" id="guests" min="1" required>
+                    <input type="number" name="guests" id="guests" required>
                     <input type="submit" value="Confirm" id="confirm">
                 </form>
             </div>
@@ -243,42 +258,50 @@
             </div>
             <div class="nearest">
                 <div class="nearCard">
-                    <img src="/static/uploading/v1.jpg" alt="">
+                    <!--<img src="/static/uploading/v1.jpg" alt="">-->
+                    <img src="{% static 'uploading/v1.jpg' %}" alt="">
                     <h3>Banglamukhi Temple</h3>
                     <p>105Km Away From Ujjain</p>
                 </div>
                 <div class="nearCard">
-                    <img src="/static/uploading/v8.jpg" alt="">
+                    <!--<img src="/static/uploading/v8.jpg" alt="">-->
+                    <img src="{% static 'uploading/v8.jpg' %}" alt="">
                     <h3>Jogi Bhadak Waterfall</h3>
                     <p>138Km Away From Ujjain</p>
                 </div>
                 <div class="nearCard">
-                    <img src="/static/uploading/v2.jpeg" alt="">
+                    <!--<img src="/static/uploading/v2.jpeg" alt="">-->
+                    <img src="{% static 'uploading/v2.jpeg' %}" alt="">
                     <h3>Omkareshwar Temple</h3>
                     <p>140-160Km Away From Ujjain</p>
                 </div>
                 <div class="nearCard">
-                    <img src="/static/uploading/v3.jpg" alt="">
+                    <!--<img src="/static/uploading/v3.jpg" alt="">-->
+                    <img src="{% static 'uploading/v3.jpg' %}" alt="">
                     <h3>Sailani Tapu</h3>
                     <p>146.5Km Away From Ujjain</p>
                 </div>
                 <div class="nearCard">
-                    <img src="/static/uploading/v4.jpg" alt="">
+                    <!--<img src="/static/uploading/v4.jpg" alt="">-->
+                    <img src="{% static 'uploading/v4.jpg' %}" alt="">
                     <h3>Mandu</h3>
                     <p>155Km Away From Ujjain</p>
                 </div>
                 <div class="nearCard">
-                    <img src="/static/uploading/v5.jpg" alt="">
+                    <!--<img src="/static/uploading/v5.jpg" alt="">-->
+                    <img src="{% static 'uploading/v5.jpg' %}" alt="">
                     <h3>Hanuwantiya</h3>
                     <p>204.5Km Away From Ujjain</p>
                 </div>
                 <div class="nearCard">
-                    <img src="/static/uploading/v6.jpg" alt="">
+                    <!--<img src="/static/uploading/v6.jpg" alt="">-->
+                    <img src="{% static 'uploading/v6.jpg' %}" alt="">
                     <h3>Pachmarhi</h3>
                     <p>283Km Away From Ujjain</p>
                 </div>
                 <div class="nearCard">
-                    <img src="/static/uploading/v7.jpg" alt="">
+                    <!--<img src="/static/uploading/v7.jpg" alt="">-->
+                    <img src="{% static 'uploading/v7.jpg' %}" alt="">
                     <h3>Maheshwar</h3>
                     <p>152Km Away From Ujjain</p>
                 </div>
@@ -363,7 +386,8 @@
 </div>-->
     </div>
     <!-->script src="/static/script/app.js"></script>-->
-        <script src="{% static 'script/app.js' %}"></script>
+    <script> let paymentUrl = "{% url 'taxi_payment_page' %}"; </script>
+    <script src="{% static 'script/app.js' %}"></script>
 </body>
 
 </html>

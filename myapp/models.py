@@ -41,7 +41,7 @@ class roomBook(models.Model):
     paypal_capture_id = models.CharField(max_length=200, null= True, blank = True)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    def _str_(self):
+    def __str__(self):
         return self.your_name
 
 

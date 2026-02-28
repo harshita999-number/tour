@@ -27,8 +27,8 @@ def booking(request):
     if request.method == "POST":
        request.session['taxi_booking_data'] = {
        'place' : request.POST.get('place'),
-       'member' : request.POST.get('member_count'),
-       'date' : request.POST.get('event_date'),
+       'member_count' : request.POST.get('member_count'),
+       'event_date' : request.POST.get('event_date'),
        }
        #booked = Booknow(place=place, member_count=member, event_date=date)
        #booked.save()
@@ -38,7 +38,7 @@ def booking(request):
         #    'member_cout': member,
           #  'event_date': date,
         #}
-       return redirect("/taxi_payment_page") 
+       return redirect("taxi_payment_page") 
     return redirect('/index3')
 
 
@@ -159,9 +159,9 @@ def room_book(request):
        guests = request.POST.get('guests')
     
        if roomBook.objects.filter(your_email=your_email).exists():
-            return render(request,'index3.html',{'error': 'Email already exists!'})
+            return render(request,'index3.html',{'error': 'Email already exists please fill form again!'})
        if roomBook.objects.filter(your_name=your_name).exists():
-            return render(request,'index3.html',{'error': 'This name already exists!'})
+            return render(request,'payment.html',{'error': 'This name already exists!'})
        #roombooked = roomBook(your_name=your_name, your_email=your_email, checkin=checkin, checkout=checkout, guests=guests)
        #roombooked.save()
 
@@ -172,8 +172,8 @@ def room_book(request):
             'checkout': checkout,
             'guests': guests,
         }
-       return redirect("/payment_page")   
-    return redirect('/index3')
+       return redirect("payment_page")   
+    return redirect('/index3/')
 
 
 from paypalcheckoutsdk.orders import OrdersCreateRequest
@@ -228,19 +228,19 @@ def capture_order(request):
     booking_data = request.session.get('booking_data')
 
     if booking_data:
-
+        
         roomBook.objects.create(
-            your_name=booking_data['your_name'],
-            your_email=booking_data['your_email'],
-            checkin=booking_data['checkin'],
-            checkout=booking_data['checkout'],
-            guests=booking_data['guests'],
-            payment_status="Paid",
-            paypal_order_id=order_id,
-            paypal_capture_id=capture_id
+                your_name=booking_data['your_name'],
+                your_email=booking_data['your_email'],
+                checkin=booking_data['checkin'],
+                checkout=booking_data['checkout'],
+                guests=booking_data['guests'],
+                payment_status="Paid",
+                paypal_order_id=order_id,
+                paypal_capture_id=capture_id
         )
 
-        del request.session['booking_data']
+        del request.session['']
 
     return JsonResponse({"status": "success"})
 
