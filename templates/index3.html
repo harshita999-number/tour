@@ -289,7 +289,8 @@
                 <h1>Contact <span>Us</span></h1>
             </div>
             <div class="contact">
-                <img src="/static/uploading/contact.jpg" alt="">
+               <!--<img src="/static/uploading/contact.jpg" alt="">-->
+                <img src="{% static 'uploading/contact.jpg' %}" alt="">
                 <div class="contactForm">
                     <form action="/connect" method="POST">
                         {% csrf_token %}
@@ -361,7 +362,8 @@
     </form>
 </div>-->
     </div>
-    <script src="/static/script/app.js"></script>
+    <!-->script src="/static/script/app.js"></script>-->
+        <script src="{% static 'script/app.js' %}"></script>
 </body>
 
 </html>
