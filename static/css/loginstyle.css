@@ -88,6 +88,30 @@ width: 80px;
      line-height: 0px;
      cursor: pointer;
  }
+ .password-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+ }
+ .password-wrapper input {
+    width: 100%;
+    padding-right: 10px;
+    box-sizing: border-box;
+ }
+ .toggle-password {
+    position: absolute;
+    top: 31.7%;
+    /*margin-right: 25px;*/
+    right: 24.5%;
+    font-size: 16px;
+    transform: translateY(20px);
+    cursor: pointer;
+    color: grey;
+ }
+ .toggle-password:hover {
+    color: black;
+ }
  @media only screen and (max-width:500px){
     .heading{
         margin: auto;

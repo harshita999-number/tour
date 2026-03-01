@@ -10,21 +10,21 @@ function validation(){
     if(usercheck.test(user_name)){
         document.getElementById('usererror').innerHTML = " ";
     }else{
-        document.getElementById('usererror').innerHTML = '<span style="color: red;">** Username is Invalid</span>'; 
+        document.getElementById('usererror').innerHTML = '<span style="color: red;">** Username must contain letters only with dot and space and atleast 5 character</span>'; 
         return false;
-    }
+    }//max 30 dot and space allowed
     if(emailcheck.test(em)){
         document.getElementById('emailerror').innerHTML = " ";
     }else{
         document.getElementById('emailerror').innerHTML = '<span style="color: red;">** Email is Invalid</span>';  
         return false;
-    }
+    }//start with min 3 letter, then min 2 number, @, domain name min 3 letters, dot, extension 2-6 letters
     if(passwordcheck.test(pass1)){
         document.getElementById('passworderror').innerHTML = " ";
     }else{
-        document.getElementById('passworderror').innerHTML = '<span style="color: red;">** Password is Invalid</span>'; 
+        document.getElementById('passworderror').innerHTML = '<span style="color: red;">** Password must contain</span>'; 
         return false;
-    }
+    }//atleast 1 number, 1 special character, 1 small letter, 1 capital letter, length 8-16
     if(pass1.match(pass2)){
         document.getElementById('confirmpassworderror').innerHTML = " ";
     }else{

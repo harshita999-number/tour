@@ -18,9 +18,9 @@ def index3(request):
         return redirect("/login")
     return render(request, 'index3.html')
 
+from django.conf import settings 
 def taxi_payment_page(request):
-   # from django.conf import settings 
-    return render(request,"taxi_payment.html")#,{"paypal_client_id":settings.PAYPAL_CLIENT_ID})
+    return render(request, "taxi_payment.html", {"paypal_client_id": settings.PAYPAL_CLIENT_ID})
 
 
 def booking(request):
@@ -147,8 +147,8 @@ def taxi_cancel(request, id):
 
 
 def payment_page(request):
-    #from django.conf import settings 
-    return render(request,"payment.html")#,{"paypal_client_id":settings.PAYPAL_CLIENT_ID})
+    from django.conf import settings 
+    return render(request, "payment.html", {"paypal_client_id": settings.PAYPAL_CLIENT_ID})
 
 def room_book(request):
     if request.method == "POST":
@@ -227,6 +227,7 @@ def capture_order(request):
 
     booking_data = request.session.get('booking_data')
 
+
     if booking_data:
         
         roomBook.objects.create(
@@ -240,7 +241,7 @@ def capture_order(request):
                 paypal_capture_id=capture_id
         )
 
-        del request.session['']
+        del request.session['booking data']
 
     return JsonResponse({"status": "success"})
 
@@ -309,13 +310,17 @@ def loginUser(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         #check if user has entered correct credentials
+        
+        username_exists = User.objects.filter(username=username).exists()
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
             return redirect("/index3")
+        if not username_exists and user is None:
+            messages.error(request, 'Invalid Username')
         else:
-            messages.error(request, 'Invalid Username Or Password')
-            return redirect('/login')
+            messages.error(request, 'Invalid Password')
+        return redirect('/login')
     return render(request, 'login.html')
 
 def logoutUser(request):

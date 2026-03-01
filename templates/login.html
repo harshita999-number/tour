@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
+    <script src="https://kit.fontawesome.com/f7521c047c.js" crossorigin="anonymous"></script>
     <!--<link rel="stylesheet" href="/static/css/loginstyle.css">-->
     <link rel="stylesheet" href="{% static 'css/loginstyle.css' %}">
 </head>
@@ -25,7 +26,10 @@
                     <p>Username</p>
                     <input type="text" placeholder="Enter Username" name="username" id="username" required /><br>
                     <p>Password</p>
-                    <input type="password" placeholder="Enter Password" name="password" id="password" required /><br>
+                    <div class="passwor-wrapper">
+                        <input type="password" placeholder="Enter Password" name="password" id="password" required /><br>
+                        <i class="fa-solid fa-eye toggle-password" id="togglePassword"></i>
+                    </div>
                     {% if messages %}
                     {% for message in messages %}
                     <div class="alert">
@@ -40,6 +44,7 @@
             </div>
         </div>
     </div>
+    <script src="{% static 'script/loginapp.js' %}"></script>
 </body>
 
 </html>

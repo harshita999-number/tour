@@ -1,35 +1,43 @@
-{% load static %}
-<h2>Taxi Booking Payment</h2>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Taxi Payment</title>
+</head>
+<body>
+    <h2>Taxi Booking Payment</h2>
 
-<div id="paypal-button-container"></div>
+    <div id="paypal-button-container"></div>
 
-<script src="https://www.paypal.com/sdk/js?client-id={{paypal_client_id}}&currency=USD"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id={{ paypal_client_id }}&currency=USD"></script>
 
-<script>
-paypal.Buttons({
+    <script>
+    paypal.Buttons({
 
-    createOrder: function() {
-        return fetch("/create-taxi-order")
-        .then(res => res.json())
-        .then(data => data.orderID);
+        createOrder: function(data, actions) {
+            console.log("createOrder called");
+            return fetch("/create_taxi_order")
+            .then(res => res.json())
+            .then(data => data.orderID);
+        },
+
+        onApprove: function(data) {
+            return fetch("/capture_taxi_order", {
+                method: "post",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    orderID: data.orderID
+                })
+            }).then(function() {
+                window.location.href = "/taxi-history";
+            });
     },
 
-    onApprove: function(data) {
-        return fetch("/capture-taxi-order", {
-            method: "post",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({
-                orderID: data.orderID
-            })
-        }).then(function() {
-            window.location.href = "/taxi-history";
-        });
-    },
+        onCancel: function () {
+            alert("Payment Cancelled ❌");
+            window.location.href = "/index3";
+        }
 
-    onCancel: function () {
-        alert("Payment Cancelled ❌");
-        window.location.href = "/index3";
-    }
-
-}).render('#paypal-button-container');
-</script>
+    }).render('#paypal-button-container');
+  </script>
+</body>
+</html>
