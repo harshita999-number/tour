@@ -9,6 +9,8 @@ from django.conf import settings
 from django.utils import timezone
 from datetime import timedelta
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
+
 
 
 
@@ -20,10 +22,15 @@ def index3(request):
 
 from django.conf import settings 
 def taxi_payment_page(request):
+    booking_data = request.session.get('taxi_booking_data')
+    if not booking_data:
+        messages.error(request, "Booking session expired. please submit booking again.")
+        return redirect('/index3')
     print("PAYPAL_CLIENT_ID:", settings.PAYPAL_CLIENT_ID)
     return render(request, "taxi_payment.html", {"paypal_client_id": settings.PAYPAL_CLIENT_ID})
 
 
+#@login_required
 def booking(request):
     if request.method == "POST":
        request.session['taxi_booking_data'] = {
@@ -39,7 +46,7 @@ def booking(request):
         #    'member_cout': member,
           #  'event_date': date,
         #}
-       return redirect("taxi_payment_page") 
+       return redirect("/taxi_payment_page") 
     return redirect('/index3')
 
 
