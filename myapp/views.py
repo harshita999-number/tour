@@ -5,7 +5,7 @@ from django.contrib.auth import logout, authenticate, login
 from django.contrib import messages
 #from paypalcheckoutsdk.core import PayPalHttpClient, SandboxEnvironment
 from paypalcheckoutsdk.orders import OrdersCreateRequest, OrdersCaptureRequest
-#from django.conf import settings
+from django.conf import settings
 from django.utils import timezone
 from datetime import timedelta
 from django.views.decorators.csrf import csrf_exempt
@@ -20,6 +20,7 @@ def index3(request):
 
 from django.conf import settings 
 def taxi_payment_page(request):
+    print("PAYPAL_CLIENT_ID:", settings.PAYPAL_CLIENT_ID)
     return render(request, "taxi_payment.html", {"paypal_client_id": settings.PAYPAL_CLIENT_ID})
 
 
@@ -241,7 +242,7 @@ def capture_order(request):
                 paypal_capture_id=capture_id
         )
 
-        del request.session['booking data']
+        del request.session['booking_data']
 
     return JsonResponse({"status": "success"})
 

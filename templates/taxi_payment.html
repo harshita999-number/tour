@@ -14,28 +14,42 @@
     paypal.Buttons({
 
         createOrder: function(data, actions) {
-            console.log("createOrder called");
-            return fetch("/create_taxi_order")
-            .then(res => res.json())
-            .then(data => data.orderID);
+            return fetch("/create_taxi_order",{
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.error){
+                    alert("Booking data missing session expired. Please login and try again.");
+                    window.location.href = "/login";
+                }
+                else{
+                    return data.orderID;
+                }
+            });    
         },
-
-        onApprove: function(data) {
+        onApprove: function(data, actions) {
             return fetch("/capture_taxi_order", {
                 method: "post",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({
                     orderID: data.orderID
                 })
-            }).then(function() {
-                window.location.href = "/taxi-history";
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert("Payment Successful");
+                window.location.href = "/taxi_history";
             });
-    },
-
-        onCancel: function () {
+        },
+        onError: function (err) {
+            console.log("PayPal Error:", err);
             alert("Payment Cancelled ❌");
             window.location.href = "/index3";
-        }
+        },
 
     }).render('#paypal-button-container');
   </script>
