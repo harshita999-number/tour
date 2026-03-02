@@ -26,7 +26,7 @@ def taxi_payment_page(request):
     if not taxi_booking_data:
         messages.error(request, "Booking session expired. please submit booking again.")
         return redirect('/index3')
-    #print("PAYPAL_CLIENT_ID:", settings.PAYPAL_CLIENT_ID)
+    print("PAYPAL_CLIENT_ID:", settings.PAYPAL_CLIENT_ID)
     return render(request, "taxi_payment.html", {"paypal_client_id": settings.PAYPAL_CLIENT_ID})
 
 
