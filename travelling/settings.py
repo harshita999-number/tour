@@ -134,7 +134,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+print("PAYPAL FROM ENV:", os.environ.get("PAYPAL_CLIENT_ID"))
 PAYPAL_CLIENT_ID = os.environ.get("PAYPAL_CLIENT_ID")
 PAYPAL_CLIENT_SECRET = os.environ.get("PAYPAL_CLIENT_SECRET")
 
