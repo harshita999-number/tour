@@ -22,8 +22,8 @@ def index3(request):
 
 from django.conf import settings 
 def taxi_payment_page(request):
-    booking_data = request.session.get('taxi_booking_data')
-    if not booking_data:
+    taxi_booking_data = request.session.get('taxi_booking_data')
+    if not taxi_booking_data:
         messages.error(request, "Booking session expired. please submit booking again.")
         return redirect('/index3')
     print("PAYPAL_CLIENT_ID:", settings.PAYPAL_CLIENT_ID)
@@ -57,9 +57,9 @@ from django.http import JsonResponse
 @csrf_exempt
 def create_taxi_order(request):
 
-    booking_data = request.session.get('taxi_booking_data')
+    taxi_booking_data = request.session.get('taxi_booking_data')
 
-    if not booking_data:
+    if not taxi_booking_data:
         return JsonResponse({"error": "No taxi booking data"}, status=400)
 
     order_request = OrdersCreateRequest()
@@ -98,14 +98,14 @@ def capture_taxi_order(request):
 
     capture_id = response.result.purchase_units[0].payments.captures[0].id
 
-    booking_data = request.session.get('taxi_booking_data')
+    taxi_booking_data = request.session.get('taxi_booking_data')
 
-    if booking_data:
+    if taxi_booking_data:
 
         Booknow.objects.create(
-            place=booking_data['place'],
-            member_count=booking_data['member_count'],
-            event_date=booking_data['event_date'],
+            place=taxi_booking_data['place'],
+            member_count=taxi_booking_data['member_count'],
+            event_date=taxi_booking_data['event_date'],
             payment_status="Paid",
             paypal_order_id=order_id,
             paypal_capture_id=capture_id

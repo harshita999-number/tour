@@ -7,14 +7,14 @@
     <h2>Taxi Booking Payment</h2>
 
     <div id="paypal-button-container"></div>
-
+    <p>DEBUG: {{ paypal_client_id }}</p>
     <script src="https://www.paypal.com/sdk/js?client-id={{ paypal_client_id }}&currency=USD"></script>
 
     <script>
     paypal.Buttons({
 
         createOrder: function(data, actions) {
-            return fetch("create_taxi_order",{
+            return fetch("/create_taxi_order",{
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -30,8 +30,9 @@
                 return response.json();
             })*/
             .then(data => {
-                if(data.error){
+                if(!data.orderID){
                     alert("Booking data missing session expired. Please login and try again.");
+                    throw new Error("no orderID");
                     window.location.href = "/login";
                 }
                 else{
@@ -59,7 +60,8 @@
             window.location.href = "/index3";
         },
 
-    }).render('#paypal-button-container');
+    })
+    .render('#paypal-button-container');
   </script>
 </body>
 </html>
