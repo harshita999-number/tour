@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,7 +9,7 @@
 
     <div id="paypal-button-container"></div>
     <!--<p>DEBUG: {{ paypal_client_id }}</p>-->
-    <script src="https://www.paypal.com/sdk/js?client-id={{ paypal_client_id }}&currency=USD"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id={{ paypal_client_id }}&currency=USD&buyer-country=US"></script>
 
     <script>
     paypal.Buttons({
@@ -50,16 +51,21 @@
             })
             .then(response => response.json())
             .then(data => {
-                alert("Payment Successful");
-                window.location.href = "/taxi_history";
+                //setTimeout(function(){           
+                alert("Payment Successful✅");
+                setTimeout(function(){   
+                    window.location.href = "/taxi_history";
+                //}, 3000);
+                }, 2500);
             });
         },
         onError: function (err) {
             console.log("PayPal Error:", err);
             alert("Payment Cancelled ❌");
-            window.location.href = "/index3";
-        },
-
+            /etTimeout(function(){    
+            window.location.href = "taxi_payment_page";
+            }, 200);
+        }
     })
     .render('#paypal-button-container');
   </script>

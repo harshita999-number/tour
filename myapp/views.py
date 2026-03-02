@@ -46,8 +46,8 @@ def booking(request):
         #    'member_cout': member,
           #  'event_date': date,
         #}
-       return redirect("/taxi_payment_page") 
-    return redirect('/index3')
+       return redirect("taxi_payment_page") 
+    return redirect('/index3/')
 
 
 from paypalcheckoutsdk.orders import OrdersCreateRequest
@@ -123,9 +123,9 @@ def taxi_history(request):
 from paypalcheckoutsdk.payments import CapturesRefundRequest
 from datetime import timedelta
 from django.utils import timezone
-from django.contrib.auth.decorators import login_required
+#from django.contrib.auth.decorators import login_required
 
-@login_required
+#@login_required
 def taxi_cancel(request, id):
 
     booking = Booknow.objects.get(id=id)

@@ -22,7 +22,7 @@ function validation(){
     if(passwordcheck.test(pass1)){
         document.getElementById('passworderror').innerHTML = " ";
     }else{
-        document.getElementById('passworderror').innerHTML = '<span style="color: red;">** Password must contain</span>'; 
+        document.getElementById('passworderror').innerHTML = '<span style="color: red;">** Password Invalid</span>'; 
         return false;
     }//atleast 1 number, 1 special character, 1 small letter, 1 capital letter, length 8-16
     if(pass1.match(pass2)){
