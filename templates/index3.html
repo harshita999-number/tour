@@ -59,7 +59,7 @@
                         {% csrf_token %}
                         <h2>Book Your Taxi Now</h2>
                         <label for="destination">Where You Gone</label>
-                        <input list="places" placeholder="where you gone" name="place" id="placeName" required/>
+                        <input list="places" placeholder="where you gone" name="place" id="placeName" value="Gopal Mandir" required/>
                         <datalist id="places">
                                 <option value="Banglamukhi Temple"></option>
                                 <option value="Chintaman Ganesh Temple"></option>
@@ -92,7 +92,7 @@
                         <label for="number">Members</label>
                         <input type="number" name="member_count" id="member" value="2"  required/>
                         <label for="date">At Which Date</label>
-                        <input type="date" name="event_date" id="date" required/>
+                        <input type="date" name="event_date" id="date" value="11/11/2026" required/>
                         <input type="submit" value="Submit" id="submit">
                     </form>
                 </div>
