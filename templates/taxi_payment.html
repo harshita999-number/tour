@@ -8,10 +8,10 @@
     <h2>Taxi Booking Payment</h2>
 
     <div id="paypal-button-container"></div>
-    <script>
+    <!--<script>
         const paypalClientId = "{{ paypal_client_id|escapejs }}";
-    </script>
-    <script src="https://www.paypal.com/sdk/js?client-id=" + paypalClientId + "&currency=USD&buyer-country=US"></script>
+    </script>-->
+    <script src="https://www.paypal.com/sdk/js?client-id={{ paypal_client_id|urlencode }}&currency=USD&buyer-country=US"></script>
 
     <script>
     paypal.Buttons({
