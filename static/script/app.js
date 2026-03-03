@@ -42,11 +42,15 @@ submit.addEventListener("click",function(event){
         alert("Please select a name from the options provided.")
         event.preventDefault();
     }
-    else if(placeName == "" || selectedDate == ""){
+    else if(placeName == "" || dateInput == ""){
         //event.preventDefault();
         alert("Please Fill Form!")
         event.preventDefault();
     }
+    /*else if(dateInput == ""){
+        alert("please fill date")
+        event.preventDefault();
+    }*/
     else if(selectedDate < currentDate){
         //event.preventDefault();
         alert("Please Select A Future Date")
@@ -111,7 +115,8 @@ confirm.addEventListener("click",function(event){
         return;
     }
     else{
-        alert("Your Room is Booked")
+        alert("Your Room is Booking is proceeding please make payment")
+        window.location.href = H_paymentUrl;
     }
 })
 
@@ -143,6 +148,16 @@ Cbtn.addEventListener("click", function(event){
     }
 })
 
+
+/*setTimeout(function() {
+    var msg = document.getElementById("error-message");
+    if (msg) {
+        msg.style.opacity = "0";
+        setTimeout(function(){
+            msg.style.display = "none";
+        }, 1000);
+    }
+}, 5000);*/
 
 
 

@@ -3,15 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <title>Taxi Payment</title>
+    <!--<style>
+        .error-alert {
+            background-color: #f8d7da;
+            color: #842029;
+            padding: 12px 18px;
+            margin: 15px;
+            border: 1px solid #f5c2c7;
+            border-radius: 6px;
+            font-size: 15px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn { 
+            from {
+                opacity: 0;
+                transform: translateY(-10px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+    </style>-->
 </head>
 <body>
+
+<!--{% if messages %}
+    {% for message in messages %} 
+       <div id="error-message" class="error-alert">
+           {{ message }}
+       </div>
+    {% endfor %}  
+{% endif %}
+
+<script>
+setTimeout(function() {
+    var msg = document.getElementById("error-message");
+    if (msg) {
+        msg.style.opacity = "0";
+        setTimeout(function(){
+            msg.style.display = "none";
+        }, 1000);
+    }
+}, 5000);
+</script>-->
+
     <h2>Taxi Booking Payment</h2>
 
     <div id="paypal-button-container"></div>
     <!--<script>
         const paypalClientId = "{{ paypal_client_id|escapejs }}";
     </script>-->
-    <script src="https://www.paypal.com/sdk/js?client-id={{ paypal_client_id|urlencode }}&currency=USD&buyer-country=US"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id={{ paypal_client_id }}&currency=USD&buyer-country=US"></script>
 
     <script>
     paypal.Buttons({
@@ -44,7 +88,7 @@
             });    
         },
         onApprove: function(data, actions) {
-            return fetch("capture_taxi_order", {
+            return fetch("/capture_taxi_order", {
                 method: "post",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({
@@ -52,21 +96,25 @@
                 })
             })
             .then(response => response.json())
-            .then(data => {
-                //setTimeout(function(){           
+            .then(data => {         
                 alert("Payment Successful✅");
                 setTimeout(function(){   
                     window.location.href = "/taxi_history";
-                //}, 3000);
                 }, 2500);
             });
         },
+        onCancel: function (data) {
+            alert("Payment Cancelled ❌");
+            setTimeout(function(){    
+            window.location.href = "/index3";
+            }, 2000);
+        },
         onError: function (err) {
             console.log("PayPal Error:", err);
-            alert("Payment Cancelled ❌");
-            /etTimeout(function(){    
-            window.location.href = "taxi_payment_page";
-            }, 200);
+            alert("Payment Failed ❌");
+            setTimeout(function(){    
+            window.location.href = "/taxi_payment_page";
+            }, 2000);
         }
     })
     .render('#paypal-button-container');

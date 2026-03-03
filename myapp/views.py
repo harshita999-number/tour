@@ -24,8 +24,8 @@ from django.conf import settings
 def taxi_payment_page(request):
     taxi_booking_data = request.session.get('taxi_booking_data')
     if not taxi_booking_data:
-        messages.error(request, "Booking session expired. please submit booking again.")
-        return redirect('/index3')
+        messages.error(request, "No Booking data or Booking session expired. please submit booking again.")
+        return redirect('/login')
     #print("PAYPAL_CLIENT_ID:", settings.PAYPAL_CLIENT_ID)
     return render(request, "taxi_payment.html", {"paypal_client_id": settings.PAYPAL_CLIENT_ID})
 
@@ -153,11 +153,18 @@ def taxi_cancel(request, id):
 
 
 
-
+from django.conf import settings 
 def payment_page(request):
-    from django.conf import settings 
+    booking_data = request.session.get('booking_data')
+    if not booking_data:
+        print("redirect block running")
+        messages.error(request, "No Booking data or Booking session expired. please submit booking again.")
+        return redirect('/login')
+    print("render block running")
     return render(request, "payment.html", {"paypal_client_id": settings.PAYPAL_CLIENT_ID})
 
+   
+   
 def room_book(request):
     if request.method == "POST":
        your_name = request.POST.get('your_name')
@@ -184,6 +191,7 @@ def room_book(request):
     return redirect('/index3/')
 
 
+
 from paypalcheckoutsdk.orders import OrdersCreateRequest
 from django.http import JsonResponse
 from .paypal_client import client
@@ -192,9 +200,9 @@ import json
 @csrf_exempt
 def create_order(request):
 
-    request_data = request.session.get('booking_data')
+    booking_data = request.session.get('booking_data')
 
-    if not request_data:
+    if not booking_data:
         return JsonResponse({"error": "No booking data"}, status=400)
 
     order_request = OrdersCreateRequest()
@@ -214,6 +222,7 @@ def create_order(request):
     return JsonResponse({
         "orderID": response.result.id
     })
+
 
 
 
@@ -256,8 +265,10 @@ def capture_order(request):
 
 
 def history(request):
-    bookings = roomBook.objects.filter(your_email=request.user.email)
+    bookings = roomBook.objects.all()#filter(your_email=request.user.email)
     return render(request, "history.html", {"bookings": bookings})
+
+
 
 from datetime import timedelta
 from django.utils import timezone
@@ -288,7 +299,6 @@ def cancel_booking(request, id):
         booking.save()
 
     return redirect('/history')
-
 
 
 

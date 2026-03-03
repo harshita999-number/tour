@@ -15,6 +15,13 @@
 </head>
 <body>
     <div class="container">
+        <!--{% if messages %}
+           {% for message in messages %} 
+               <div id="error-message" class="error-alert">
+                   {{ message }}
+               </div>
+           {% endfor %}  
+        {% endif %}-->
         <a href="/index3"></a>
         <nav>
             <div class="logo">
@@ -94,7 +101,7 @@
                         <label for="date">At Which Date</label>
                         <input type="date" name="event_date" id="date" required/>
                         <input type="submit" value="Submit" id="submit">
-                        <p>For Cancel Booking <a href="/taxi_payment_page">cancel here</a></p>
+                        <p>For Cancel Booking <a href="/taxi_history">cancel here</a></p>
                     </form>
                 </div>
             </div>
@@ -248,7 +255,7 @@
                     <label for="guests">Number of Guests:</label>
                     <input type="number" name="guests" id="guests" required>
                     <input type="submit" value="Confirm" id="confirm">
-                     <p>For Cancel Booking <a href='/payment_page'>cancel here</a></p>
+                     <p>For Cancel Booking <a href='/history'>cancel here</a></p>
                 </form>
             </div>
         </div>
@@ -389,6 +396,7 @@
     </div>
     <!-->script src="/static/script/app.js"></script>-->
     <script> let paymentUrl = "{% url 'taxi_payment_page' %}"; </script>
+    <script> let H_paymentUrl = "{% url 'payment_page' %}"; </script>
     <script src="{% static 'script/app.js' %}"></script>
 </body>
 

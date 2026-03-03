@@ -1,4 +1,54 @@
-{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel Payment</title>
+    <!--<style>
+        .error-alert {
+            background-color: #f8d7da;
+            color: #842029;
+            padding: 12px 18px;
+            margin: 15px;
+            border: 1px solid #f5c2c7;
+            border-radius: 6px;
+            font-size: 15px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn { 
+            from {
+                opacity: 0;
+                transform: translateY(-10px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+    </style>-->
+</head>
+<body> 
+
+<!--{% if messages %}
+    {% for message in messages %} 
+       <div id="error-message">
+           {{ message }}
+       </div>
+    {% endfor %}  
+{% endif %}
+
+<script>
+setTimeout(function() {
+    var msg = document.getElementById("error-message");
+    if (msg) {
+        msg.style.opacity = "0";
+        setTimeout(function(){
+            msg.style.display = "none";
+        }, 1000);
+    }
+}, 5000);
+</script>-->
+
 <h2>Complete Your Payment</h2>
 
 <div id="paypal-button-container"></div>
@@ -8,32 +58,59 @@
 <script>
 paypal.Buttons({
 
-    createOrder: function() {
-        return fetch("/create_order")
-        .then(res => res.json())
-        .then(data => data.orderID);
+    createOrder: function(data, actions) {
+        return fetch("/create_order", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(!data.orderID){
+                alert("Booking data missing session expired. Please login and try again.");
+                throw new Error("no orderID");
+                window.location.href = "/login";
+            }
+            else{
+                return data.orderID;
+            }
+        });    
     },
 
-    onApprove: function(data) {
+    onApprove: function(data, actions) {
         return fetch("/capture_order", {
             method: "post",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
                 orderID: data.orderID
             })
-        }).then(function() {
-            window.location.href = "/history";
+        })
+        .then(response => response.json())
+        .then(data => {          
+                alert("Payment Successful✅");
+                setTimeout(function(){   
+                    window.location.href = "/history";
+                }, 2500);
         });
     },
 
-    onCancel: function () {
+    onCancel: function (data) {
         alert("Payment Cancelled ❌");
-        window.location.href = "/index3";
+        setTimeout(function(){    
+            window.location.href = "/index3";
+        }, 2000);
     },
 
-    onError: function () {
+    onError: function (err) {
+        console.log("PayPal Error:", err);
         alert("Payment Failed ❌");
+        setTimeout(function(){    
+            window.location.href = "/payment_page";
+        }, 2000);
     }
 
 }).render('#paypal-button-container');
 </script>
+</body>
+</html>
