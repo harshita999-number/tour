@@ -6,9 +6,24 @@
 Place: {{b.place}} <br>
 Members: {{b.member_count}} <br>
 Date: {{b.event_date}} <br>
-Status: {{b.payment_status}} <br>
-
-<a href="/taxi_cancel/{{b.id}}">Cancel</a>
+<!--Status: {{b.payment_status}} <br>
+<span style="color:black; font-weight:bold;">
+Status:
+</span>-->
+Status:
+{% if b.payment_status == "Paid" %}
+    <span style="color:blue; font-weight:bold;">{{b.payment_status}}</span>
+{% elif b.payment_status == "Pending" %}
+    <span style="color:orange; font-weight:bold;">{{b.payment_status}}</span>
+{% elif b.payment_status == "Refunded" %}
+    <span style="color:green; font-weight:bold;">{{b.payment_status}}</span>
+{% elif b.payment_status == "Cancel Time Expired" %}
+    <span style="color:red; font-weight:bold;">{{b.payment_status}}</span>
+{% endif %}
+<br>
+{% if b.payment_status == "Paid" or b.payment_status == "Pending" %}
+    <a href="/taxi_cancel/{{b.id}}">Cancel</a>
+{% endif %}
 </p>
 <hr>
 {% endfor %}

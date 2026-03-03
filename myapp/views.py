@@ -384,23 +384,36 @@ def paypal_webhook(request):
 
     capture_id = data.get("resource", {}).get("id")
 
-    if not capture_id:
-        return JsonResponse({"status": "no capture id"})
+    order_id = data.get("resource", {}).get("supplementary_data",
+                                    {}).get("related_ids",
+                                    {}).get("order_id")
+
+    if event_type == "CHECKOUT.ORDER.APPROVED":
+        order_id = data.get("resource", {}).get("id")
+
+    if not capture_id and not order_id:  
+        return JsonResponse({"status": "no i foundd"})
 
     # Room booking check
-    room_booking = roomBook.objects.filter(paypal_capture_id=capture_id).first()
+    room_booking = roomBook.objects.filter(paypal_capture_id=capture_id).first() or roomBook.objects.filter(paypal_order_id=order_id).first()
 
     # Taxi booking check
-    taxi_booking = Booknow.objects.filter(paypal_capture_id=capture_id).first()
+    taxi_booking = Booknow.objects.filter(paypal_capture_id=capture_id).first() or Booknow.objects.filter(paypal_order_id=order_id).first()
 
     booking = room_booking if room_booking else taxi_booking
 
     if not booking:
         return JsonResponse({"status": "booking not found"})
+  
+    if event_type == "CHECKOUT.ORDER.APPROVED":
+        booking.payment_status = "Approved"
+        booking.paypal_order_id = order_id
+        booking.save()
 
     # ✅ SUCCESS
-    if event_type == "PAYMENT.CAPTURE.COMPLETED":
+    elif event_type == "PAYMENT.CAPTURE.COMPLETED":
         booking.payment_status = "Paid"
+        booking.paypal_capture_id = capture_id
         booking.save()
 
     # ❌ FAILED
