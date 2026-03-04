@@ -116,6 +116,8 @@ def capture_taxi_order(request):
     return JsonResponse({"status": "success"})
 
 def taxi_history(request):
+    if request.user.is_anonymous:
+        return redirect("/login")
     bookings = Booknow.objects.all()
     return render(request, "taxi_history.html", {"bookings": bookings})
 
@@ -265,6 +267,8 @@ def capture_order(request):
 
 
 def history(request):
+    if request.user.is_anonymous:
+        return redirect("/login")
     bookings = roomBook.objects.all()#filter(your_email=request.user.email)
     return render(request, "history.html", {"bookings": bookings})
 

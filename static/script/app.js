@@ -42,9 +42,9 @@ submit.addEventListener("click",function(event){
         alert("Please select a name from the options provided.")
         event.preventDefault();
     }
-    else if(placeName == "" || dateInput == ""){
+    else if(dateInput == ""){
         //event.preventDefault();
-        alert("Please Fill Form!")
+        alert("Please Fill Date!")
         event.preventDefault();
     }
     /*else if(dateInput == ""){
