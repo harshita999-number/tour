@@ -369,7 +369,9 @@ from django.http import HttpResponse
 
 @csrf_exempt
 def paypal_webhook(request):
-    #try:
+  if request.method != "POST":
+    return HttpResponse("Invalid request", status=200)
+  try:
     data = json.loads(request.body)
         #payload = json.loads(request.body)
         #print("===Webhook Event Received===")
@@ -381,6 +383,7 @@ def paypal_webhook(request):
    # return HttpResponse(status=200)
     
     event_type = data.get("event_type")
+    print("Webhook received:", event_type)
 
     capture_id = data.get("resource", {}).get("id")
 
@@ -427,6 +430,10 @@ def paypal_webhook(request):
         booking.save()
 
     return JsonResponse({"status": "ok"})
+  
+  except Exception as e:
+    print("Webhook Error:", str(e))
+    return HttpResponse(status=400)
 
 
 
