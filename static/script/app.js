@@ -128,7 +128,7 @@ Cbtn.addEventListener("click", function(event){
     let emailcheck = /^[A-Za-z_]{3,}[0-9]{2,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,6}$/;
     let usercheck = /^[A-Za-z. ]{5,30}$/;
      
-    if(N.trim() === "" || E.trim() === "" || messageUs == ""){
+    if(N.trim() === "" || E.trim() === "" || messageUs.trim() === ""){
         alert("Please Fill Details")
         event.preventDefault();
     }
