@@ -103,6 +103,7 @@ def capture_taxi_order(request):
     if taxi_booking_data:
 
         Booknow.objects.create(
+            user=request.user,
             place=taxi_booking_data['place'],
             member_count=taxi_booking_data['member_count'],
             event_date=taxi_booking_data['event_date'],
@@ -159,10 +160,10 @@ from django.conf import settings
 def payment_page(request):
     booking_data = request.session.get('booking_data')
     if not booking_data:
-        print("redirect block running")
+        #print("redirect block running")
         messages.error(request, "No Booking data or Booking session expired. please submit booking again.")
         return redirect('/login')
-    print("render block running")
+    #print("render block running")
     return render(request, "payment.html", {"paypal_client_id": settings.PAYPAL_CLIENT_ID})
 
    
@@ -175,10 +176,10 @@ def room_book(request):
        checkout = request.POST.get('checkout')
        guests = request.POST.get('guests')
     
-       if roomBook.objects.filter(your_email=your_email).exists():
-            return render(request,'index3.html',{'error': 'Email already exists please fill form again!'})
-       if roomBook.objects.filter(your_name=your_name).exists():
-            return render(request,'payment.html',{'error': 'This name already exists!'})
+       #if roomBook.objects.filter(your_email=your_email).exists():
+            #return render(request,'index3.html',{'error': 'Email already exists please fill form again!'})
+       #if roomBook.objects.filter(your_name=your_name).exists():
+            #return render(request,'payment.html',{'error': 'This name already exists!'})
        #roombooked = roomBook(your_name=your_name, your_email=your_email, checkin=checkin, checkout=checkout, guests=guests)
        #roombooked.save()
 
@@ -250,6 +251,7 @@ def capture_order(request):
     if booking_data:
         
         roomBook.objects.create(
+                user=request.user,
                 your_name=booking_data['your_name'],
                 your_email=booking_data['your_email'],
                 checkin=booking_data['checkin'],
@@ -353,9 +355,10 @@ def connect(request):
     if request.method == "POST":
        username = request.POST.get('username')
        my_email = request.POST.get('my_email')
-       if Contact.objects.filter(my_email=my_email).exists():
-            return render(request,'index3.html',{'error': 'Email already exists!'})
-       con = Contact(username=username, my_email=my_email)
+       message = request.POST.get('message')
+       #if Contact.objects.filter(my_email=my_email).exists():
+            #return render(request,'index3.html',{'error': 'Email already exists!'})
+       con = Contact(user=request.user, username=username, my_email=my_email, message=message)
        con.save()
     return redirect('/index3')
 

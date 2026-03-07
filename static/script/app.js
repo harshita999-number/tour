@@ -124,13 +124,18 @@ confirm.addEventListener("click",function(event){
 Cbtn.addEventListener("click", function(event){
     let N = document.getElementById("N").value;
     let E = document.getElementById("E").value;
+    let messageUs = document.getElementById("messageUs").value;
     let emailcheck = /^[A-Za-z_]{3,}[0-9]{2,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,6}$/;
     let usercheck = /^[A-Za-z. ]{5,30}$/;
      
-    if(N.trim() === "" || E.trim() === ""){
+    if(N.trim() === "" || E.trim() === "" || messageUs == ""){
         alert("Please Fill Details")
         event.preventDefault();
     }
+    /*else if(messageUs == ""){
+        alert("Please Enter Your Message")
+        event.preventDefault();
+    }*/
     else if(!usercheck.test(N)){
         alert("Please Fill Correct Name")
         event.preventDefault();
