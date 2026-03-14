@@ -80,7 +80,7 @@ confirm.addEventListener("click",function(event){
     let selectedDate1 = new Date(dateInput1);
     let selectedDate2 = new Date(dateInput2);
     let usernamecheck = /^[A-Za-z. ]{5,30}$/;
-    let emailnamecheck = /^[A-Za-z_]{3,}[0-9]{2,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,6}$/;
+    let emailnamecheck = /^[A-Za-z_]{2,}[0-9]{2,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,6}$/;
     //currentDate.setHours(0,0,0,0);
 
     if(your_name == "" || your_email == "" || selectedDate1 == "" || selectedDate2 == ""){
@@ -125,7 +125,7 @@ Cbtn.addEventListener("click", function(event){
     let N = document.getElementById("N").value;
     let E = document.getElementById("E").value;
     let messageUs = document.getElementById("messageUs").value;
-    let emailcheck = /^[A-Za-z_]{3,}[0-9]{2,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,6}$/;
+    let emailcheck = /^[A-Za-z_]{2,}[0-9]{2,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,6}$/;
     let usercheck = /^[A-Za-z. ]{5,30}$/;
      
     if(N.trim() === "" || E.trim() === "" || messageUs.trim() === ""){
@@ -153,6 +153,10 @@ Cbtn.addEventListener("click", function(event){
     }
 })
 
+
+setTimeout(function() {
+    document.getElementById("wel-message").style.display = "none";
+}, 4000);
 
 /*setTimeout(function() {
     var msg = document.getElementById("error-message");

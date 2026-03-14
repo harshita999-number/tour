@@ -10,6 +10,8 @@ from django.utils import timezone
 from datetime import timedelta
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail 
+import random
 
 
 
@@ -18,6 +20,7 @@ from django.contrib.auth.decorators import login_required
 def index3(request):
     if request.user.is_anonymous:
         return redirect("/login")
+    #messages.success(request, 'Welcome To CoolTrips')
     return render(request, 'index3.html')
 
 from django.conf import settings 
@@ -27,6 +30,7 @@ def taxi_payment_page(request):
         messages.error(request, "No Booking data or Booking session expired. please submit booking again.")
         return redirect('/login')
     #print("PAYPAL_CLIENT_ID:", settings.PAYPAL_CLIENT_ID)
+    messages.success(request, "Welcome! You are on Taxi Payment Page.")
     return render(request, "taxi_payment.html", {"paypal_client_id": settings.PAYPAL_CLIENT_ID})
 
 
@@ -164,6 +168,7 @@ def payment_page(request):
         messages.error(request, "No Booking data or Booking session expired. please submit booking again.")
         return redirect('/login')
     #print("render block running")
+    messages.success(request, "Welcome! You are on Hotel Payment Page.")
     return render(request, "payment.html", {"paypal_client_id": settings.PAYPAL_CLIENT_ID})
 
    
@@ -309,6 +314,8 @@ def cancel_booking(request, id):
 
 
 def next(request):
+    if request.user.is_anonymous:
+        return redirect("/login")
     return render(request, 'next.html')
 
 def register(request):
@@ -325,6 +332,7 @@ def register(request):
             return render(request, 'register.html')
         my_user=User.objects.create_user(username,email,pass1)
         my_user.save()
+        messages.success(request, "you registered successfully")
         return redirect("/login")
     return render(request, 'register.html')
 
@@ -339,6 +347,7 @@ def loginUser(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
+            messages.success(request, 'Welcome To CoolTrips')
             return redirect("/index3")
         if not username_exists and user is None:
             messages.error(request, 'Invalid Username')

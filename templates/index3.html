@@ -15,14 +15,14 @@
 </head>
 <body>
     <div class="container">
-        <!--{% if messages %}
+        <a href="/index3"></a>
+        {% if messages %}
            {% for message in messages %} 
-               <div id="error-message" class="error-alert">
+               <div id="wel-message" class="wel-alert">
                    {{ message }}
                </div>
            {% endfor %}  
-        {% endif %}-->
-        <a href="/index3"></a>
+        {% endif %}    
         <nav>
             <div class="logo">
                 <h1>CoolTrips</h1>
@@ -45,7 +45,7 @@
                     <i id="user" class="fa-solid fa-sign-out"></i>
                 </a>
             </div>
-        </nav>      
+        </nav>  
         <div class="main">
             <div class="maintext">
                 <h1>Ujjain: Best Destination <br> for holiday</h1>
@@ -224,10 +224,13 @@
                 <img src="{% static 'uploading/hotel4.jpg' %}" class="slide" alt="">
                 <img src="{% static 'uploading/hotel5.jpg' %}" class="slide" alt="">
             </div>
+            <div class="slider-buttons">
             <button class="prev" onclick="changeSlide(-1)"></button>
             <button class="next" onclick="changeSlide(1)"></button>
+            </div>
         </div>
-     </div>
+        </div>
+    </div>
      <div class="booking-form">
         <div class="head">
             <h1>Book <span>Your Stay</span></h1>
@@ -371,7 +374,7 @@
                     <p>Price</p>
                 </div>
                 <div class="text">
-                    <h3>Adress</h3>
+                    <h3>Address</h3>
                     <p>999-333-5459</p>
                     <p>Galaxy Hall</p>
                     <p>Ring Road</p>

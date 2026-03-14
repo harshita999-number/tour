@@ -27,3 +27,14 @@ body{
     height: 250px;
     border-radius: 5px;
 }
+.back-icon{
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    font-size: 25px;
+    color: black;
+    text-decoration: none;
+}
+.back-icon:hover{
+    color:orange;
+}

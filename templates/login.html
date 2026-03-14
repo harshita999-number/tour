@@ -26,7 +26,7 @@
                     <p>Username</p>
                     <input type="text" placeholder="Enter Username" name="username" id="username" required /><br>
                     <p>Password</p>
-                    <div class="passwor-wrapper">
+                    <div class="password-wrapper">
                         <input type="password" placeholder="Enter Password" name="password" id="password" required /><br>
                         <i class="fa-solid fa-eye toggle-password" id="togglePassword"></i>
                     </div>
@@ -38,7 +38,8 @@
                     </div>
                     {% endfor %}
                     {% endif %}
-                    <input type="submit" value="Login" id="loginBtn">
+                    <input type="submit" value="Login" id="loginBtn"><br>
+                    <p><a href="/password_reset/">Forgot Password?</a></p>
                     <p>Don't have account<a href="/register"> Register here</a></p>
                 </form>
             </div>

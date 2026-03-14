@@ -3,15 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Hotel Payment</title>
-    <!--<style>
-        .error-alert {
+    <style>
+        .welcome-alert {
+            position: fixed;
             background-color: #f8d7da;
+            top: 0;
+            left: 0;
+            width: 100%;
             color: #842029;
             padding: 12px 18px;
-            margin: 15px;
             border: 1px solid #f5c2c7;
             border-radius: 6px;
             font-size: 15px;
+            text-align: center;
+            z-index: 1000;
             animation: fadeIn 0.5s ease-in-out;
         }
 
@@ -25,13 +30,14 @@
                 transform: translateY(0); 
             }
         }
-    </style>-->
+    </style>
+    <script src="https://kit.fontawesome.com/f7521c047c.js" crossorigin="anonymous"></script>
 </head>
 <body> 
 
-<!--{% if messages %}
+{% if messages %}
     {% for message in messages %} 
-       <div id="error-message">
+       <div id="welcome-message" class="welcome-alert">
            {{ message }}
        </div>
     {% endfor %}  
@@ -39,17 +45,19 @@
 
 <script>
 setTimeout(function() {
-    var msg = document.getElementById("error-message");
+    var msg = document.getElementById("welcome-message");
     if (msg) {
         msg.style.opacity = "0";
         setTimeout(function(){
             msg.style.display = "none";
         }, 1000);
     }
-}, 5000);
-</script>-->
+}, 3000);
+</script>
 
-<h2>Complete Your Payment</h2>
+<h2 style="color: #003087; margin-left: 250px; margin-top: 0px;">Complete Your <span style="color: #009CDE">Payment</span></h2>
+
+<h3 style="color: #003087;"> Please Choose a Payment Method To Complete <span style="color: #009CDE;">Your Hotel Booking <i class="fa-solid fa-wallet"></i></span></h3>
 
 <div id="paypal-button-container"></div>
 
@@ -112,5 +120,8 @@ paypal.Buttons({
 
 }).render('#paypal-button-container');
 </script>
+<p style="color: #003087;">Trusted and Secure <span style="color: #009CDE">Payment Gateway <i class="fa-solid fa-lock"></i></span></p>
+<p style="color: #003087;">Need Help? Contact Support: <span style="color: #009CDE;">support@travelling.com <i class="fa-solid fa-envelope"></i></span></p>
+<p style="color: #003087;">Back To Home Page<a href="/index3" style="color: #009CDE;"> click here <i class="fa-solid fa-rotate-left"></i></a></p>
 </body>
 </html>

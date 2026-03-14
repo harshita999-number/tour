@@ -5,7 +5,7 @@ function validation(){
     let pass2 = document.getElementById("pass2").value;
     let usercheck = /^[A-Za-z. ]{5,30}$/;
     let passwordcheck = /^(?=.*[0-9])(?=.*[!@#$^&*])(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
-    let emailcheck = /^[A-Za-z_]{3,}[0-9]{2,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,6}$/;
+    let emailcheck = /^[A-Za-z_]{2,}[0-9]{2,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,6}$/;
 
     if(usercheck.test(user_name)){
         document.getElementById('usererror').innerHTML = " ";
@@ -18,7 +18,7 @@ function validation(){
     }else{
         document.getElementById('emailerror').innerHTML = '<span style="color: red;">** Email is Invalid</span>';  
         return false;
-    }//start with min 3 letter, then min 2 number, @, domain name min 3 letters, dot, extension 2-6 letters
+    }//start with min 2 letter, then min 2 number, @, domain name min 3 letters, dot, extension 2-6 letters
     if(passwordcheck.test(pass1)){
         document.getElementById('passworderror').innerHTML = " ";
     }else{

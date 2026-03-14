@@ -12,6 +12,7 @@ class Booknow(models.Model):
     paypal_order_id = models.CharField(max_length=200, null=True, blank=True)
     paypal_capture_id = models.CharField(max_length=200, null= True, blank = True)
     created_at = models.DateTimeField(auto_now_add=True)
+    email_status = models.CharField(max_length=10, default="Unsent")
 
 
     def __str__(self):
@@ -23,6 +24,7 @@ class Contact(models.Model):
     username = models.CharField(max_length=100)
     my_email = models.EmailField(max_length=100)
     message = models.TextField(max_length=100)
+    email_status = models.CharField(max_length=10, default="Unsent")
 
 
 
@@ -42,6 +44,8 @@ class roomBook(models.Model):
     paypal_order_id = models.CharField(max_length=200, null=True, blank=True)
     paypal_capture_id = models.CharField(max_length=200, null= True, blank = True)
     created_at = models.DateTimeField(auto_now_add=True)
+    email_status = models.CharField(max_length=10, default="Unsent")
+
 
     def __str__(self):
         return self.your_name
