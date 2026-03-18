@@ -41,13 +41,26 @@ ul li a:hover{
     font-size: 25px;
     color: black;
     cursor: pointer;
-    margin-inline: 20px;
+    margin-inline: 15px;
+    transition: 0.2s ease;
+}
+.icons i:hover {
+    transform: scale(1.2);
+    background-color: rgba(0,0,0,0.1);
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+.icons i:active{
+    transform: scale(0.9);
+    background-color: rgba(0,0,0,0.2);
 }
 .logo{
     font-size: 20px;
     color: black;
 }
 #bar{
+    display: none;
+}
+.mobile_menu{
     display: none;
 }
 .main{
@@ -448,7 +461,28 @@ width: 80px;
 .myimg{
     width: 100%;
 }
-
+.mobile_menu{
+    display: flex;
+    position: fixed;
+    top: 77px;
+    right: -50%;
+    width: 45%;
+    background: #333;
+    flex-direction: column;
+    transition: right 0.3s ease;
+    z-index: 999;
+}
+.mobile_menu a {
+    color: white;
+    padding: 12px;
+    text-decoration: none;
+    border-top: 1px solid #444;
+    display: block;
+}
+.mobile_menu.show{
+    display: flex;
+    right: 0;
+}
 .wel-alert {
             position: fixed;
             background: linear-gradient(135deg, #0EA5E9, #38BDF8);

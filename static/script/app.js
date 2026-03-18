@@ -153,10 +153,13 @@ Cbtn.addEventListener("click", function(event){
     }
 })
 
+const wel_message = document.getElementById("wel-message");
 
-setTimeout(function() {
-    document.getElementById("wel-message").style.display = "none";
-}, 4000);
+if(wel_message){
+    setTimeout(function() {
+        wel_message.style.display = "none";
+    }, 4000);
+}
 
 /*setTimeout(function() {
     var msg = document.getElementById("error-message");
@@ -167,13 +170,22 @@ setTimeout(function() {
         }, 1000);
     }
 }, 5000);*/
+const bar = document.getElementById("bar");
+const menu = document.getElementById("mobileMenu");
 
+bar.addEventListener("click", (e) => {
+    e.stopPropagation();
+    menu.classList.toggle("show");
+});
+document.addEventListener("click", (e) => {
+    if(!menu.contains(e.target) && !bar.contains(e.target)) {
+        menu.classList.remove("show");
+    }
+});
+const links = document.querySelectorAll("#mobileMenu a");
 
-
-
-
-
-
-
-
-
+links.forEach(link => {
+    link.addEventListener("click", () => {
+       menu.classList.remove("show");
+    });
+});
