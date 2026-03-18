@@ -26,7 +26,7 @@ urlpatterns = [
     path('taxi_history', views.taxi_history, name='taxi_history'),
     path('taxi_cancel/<int:id>/', views.taxi_cancel, name='taxi_cancel'),
     path('paypal/webhook/', views.paypal_webhook, name='paypal_webhook'),
-
+    path('profile', views.profile, name='profile'),
     path("password_reset/", auth_views.PasswordResetView.as_view(template_name="password_reset.html"),name="password_reset"),
     path("password_reset_done/",auth_views.PasswordResetDoneView.as_view(template_name="password_reset_done.html"),name="password_reset_done"),
     path("reset/<uidb64>/<token>/",auth_views.PasswordResetConfirmView.as_view(template_name="password_reset_confirm.html",success_url=reverse_lazy("password_reset_complete")),name="password_reset_confirm"),

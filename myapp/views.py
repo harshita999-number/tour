@@ -375,6 +375,50 @@ def explored(request):
     return render(request, 'explored.html')
 
 
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+
+def home(request):
+    return render(request, 'home.html')
+
+def profile(request):
+    # Anonymous user check
+    if request.user.is_anonymous:
+        return redirect('/index3')
+
+    user = request.user
+    message = ''
+    message_class = ''
+
+    if request.method == 'POST':
+        # Only update when Save clicked
+        username = request.POST.get('username', '').strip()
+        email = request.POST.get('email', '').strip()
+
+        if not username or not email:
+            message = 'Fields cannot be empty!'
+            message_class = 'danger'
+        elif User.objects.exclude(pk=user.pk).filter(username=username).exists():
+            message = 'Username already taken!'
+            message_class = 'danger'
+        elif User.objects.exclude(pk=user.pk).filter(email=email).exists():
+            message = 'Email already taken!'
+            message_class = 'danger'
+        else:
+            user.username = username
+            user.email = email
+            user.save()
+            message = 'Profile updated successfully!'
+            message_class = 'success'
+
+    context = {
+        'user': user,
+        'message': message,
+        'message_class': message_class
+    }
+    return render(request, 'profile.html', context)
+
+
 
 
 from django.views.decorators.csrf import csrf_exempt
