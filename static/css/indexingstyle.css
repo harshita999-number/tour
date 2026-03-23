@@ -155,6 +155,11 @@ border-radius: 5px;
     border: none;
     margin-top: 20px;
 }
+#submit:hover{
+    transform: scale(1.2);
+    background-color: orangered;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
 .packages{
     display: flex;
     flex-wrap: wrap;
@@ -171,6 +176,10 @@ border-radius: 5px;
     width: 300px;
     height: 250px;
     border-radius: 5px;
+}
+.card img:hover{
+    transform: scale(1.2);
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
 .card h3{
     margin-left: 11px;
@@ -198,6 +207,10 @@ border-radius: 5px;
     width: 300px;
     height: 250px;
     border-radius: 5px;
+}
+.placeCard img:hover{
+    transform: scale(1.2);
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
 .placeCard h3{
    margin-top: 11px;
@@ -330,6 +343,11 @@ border-radius: 5px;
     border: none;
     margin-top: 20px;
 }
+#confirm:hover{
+    transform: scale(1.2);
+    background-color: orangered;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
 .nearest{
     display: flex;
     flex-wrap: wrap;
@@ -346,6 +364,10 @@ border-radius: 5px;
     width: 300px;
     height: 250px;
     border-radius: 5px;
+}
+.nearCard img:hover{
+    transform: scale(1.2);
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
 .nearCard h3{
     margin-top: 11px;
@@ -399,6 +421,11 @@ width: 80px;
     font-size: 16px;
     margin-top: 22px;
     border: none;
+ }
+ #Cbtn:hover{
+    transform: scale(1.2);
+    background-color: orangered;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
  }
  footer{
     background-color: black;

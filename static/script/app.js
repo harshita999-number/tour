@@ -47,10 +47,6 @@ submit.addEventListener("click",function(event){
         alert("Please Fill Date!")
         event.preventDefault();
     }
-    /*else if(dateInput == ""){
-        alert("please fill date")
-        event.preventDefault();
-    }*/
     else if(selectedDate < currentDate){
         //event.preventDefault();
         alert("Please Select A Future Date")
