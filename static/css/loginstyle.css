@@ -60,6 +60,11 @@ width: 80px;
     margin-top: 22px;
     border: none;
  }
+#loginBtn:hover{
+    transform: scale(1.2);
+    background-color: orangered;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
 .alert{
     position: fixed;
     top: 0px;

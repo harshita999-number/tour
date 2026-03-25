@@ -505,6 +505,10 @@ width: 80px;
     text-decoration: none;
     border-top: 1px solid #444;
     display: block;
+    cursor: pointer;
+}
+.mobile_menu a:hover{
+    transform: scale(0.9);
 }
 .mobile_menu.show{
     display: flex;
@@ -562,7 +566,7 @@ width: 80px;
     font-size: 38px;
     }
     .booking img{
-        width: 90%;
+        width: 80%;
     }    
     .contact img{
         width: 80%;
